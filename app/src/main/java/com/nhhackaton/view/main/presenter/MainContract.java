@@ -4,7 +4,7 @@ public interface MainContract {
 
     interface View {
         void showErrorMessage(String message);
-        void setVirtualAccount(String message);
+        void setDepositMoney(String message);
     }
 
     interface Presenter {

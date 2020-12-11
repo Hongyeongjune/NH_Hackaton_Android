@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void setVirtualAccount(String message) {
+    public void setDepositMoney(String message) {
         tvDepositMoney.setText(message + "원");
     }
 }
