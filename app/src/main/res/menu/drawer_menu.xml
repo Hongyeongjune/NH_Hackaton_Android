@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_menu_information"
+            android:title="개인 정보 관리" />
+        <item
+            android:id="@+id/drawer_menu_invest"
+            android:title="투자 신청" />
+        <item
+            android:id="@+id/drawer_menu_invest_history"
+            android:title="투자 현황" />
+        <item
+            android:id="@+id/drawer_menu_loan"
+            android:title="대출 신청" />
+        <item
+            android:id="@+id/drawer_menu_loan_history"
+            android:title="대출 현황" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/drawer_menu_logout"
+                android:title="로그아웃" />
+        </menu>
+    </item>
+</menu>
