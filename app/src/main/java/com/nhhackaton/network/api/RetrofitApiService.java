@@ -2,6 +2,7 @@ package com.nhhackaton.network.api;
 
 import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
+import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
 
 import retrofit2.Call;
@@ -26,7 +27,12 @@ public interface RetrofitApiService {
 
     /**
      * 투자 현황 조회
+     * 대출 현황 조회
      */
     @POST("/")
     Call<InvestPagingResponse> callReadInvestHistory(@Body int pageNo);
+    @POST("/")
+    Call<LoanPagingResponse> callReadLoanHistory(@Body int pageNo);
+
+
 }
