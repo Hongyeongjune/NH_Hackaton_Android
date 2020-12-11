@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import com.nhhackaton.R;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.source.SignInRepository;
+import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.main.MainActivity;
 import com.nhhackaton.view.signin.presenter.SignInContract;
@@ -62,10 +64,12 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     @Override
     public void startMainActivity(SignIn signIn) {
 
+        SharedPreferencesUtils.writeMemberToInformation(context, signIn);
+
         if(cbAutoSignIn.isChecked()) {
             // 자동 로그인
         }
-        
+
         Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
         finish();
