@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.loanhistory.LoanHistoryActivity"
+    tools:context=".view.investhistory.InvestHistoryActivity"
     android:orientation="vertical">
 
     <!--게시글 설명-->
@@ -16,7 +16,7 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/tv_load_history_no"
+            android:id="@+id/tv_invest_history_no"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
 
         <!--게시판 타입-->
         <TextView
-            android:id="@+id/tv_load_history_title"
+            android:id="@+id/tv_invest_history_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -50,7 +50,7 @@
 
         <!--게시판 금액-->
         <TextView
-            android:id="@+id/tv_load_history_money"
+            android:id="@+id/tv_invest_history_money"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -66,7 +66,7 @@
             android:layout_weight="0.025" />
 
         <TextView
-            android:id="@+id/tv_load_history_information"
+            android:id="@+id/tv_invest_history_information"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -79,7 +79,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_loan_history"
+        android:id="@+id/rv_invest_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>

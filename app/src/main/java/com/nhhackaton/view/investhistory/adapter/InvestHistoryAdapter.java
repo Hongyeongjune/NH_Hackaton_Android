@@ -1,4 +1,4 @@
-package com.nhhackaton.view.loanhistory.adapter;
+package com.nhhackaton.view.investhistory.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nhhackaton.R;
-import com.nhhackaton.data.LoanHistory.LoanHistory;
+import com.nhhackaton.data.InvestHistory.InvestHistory;
 import com.nhhackaton.listener.OnBasicItemClickListener;
 import com.nhhackaton.listener.OnLoadMoreListener;
 import com.nhhackaton.util.LogUtils;
@@ -18,10 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryViewHolder> implements LoanHistoryAdapterContract.Model, LoanHistoryAdapterContract.View{
+public class InvestHistoryAdapter extends RecyclerView.Adapter<InvestHistoryViewHolder> implements InvestHistoryAdapterContract.Model, InvestHistoryAdapterContract.View{
 
     private Context context;
-    private List<LoanHistory> loanHistories = new ArrayList<>();
+    private List<InvestHistory> investHistories = new ArrayList<>();
     private OnBasicItemClickListener onBasicItemClickListener;
     private OnLoadMoreListener onLoadMoreListener;
     private LinearLayoutManager linearLayoutManager;
@@ -29,7 +29,7 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryViewHold
     private boolean isMoreLoading = false;
     private boolean isLast = false;
 
-    public LoanHistoryAdapter(Context context, OnLoadMoreListener onLoadMoreListener) {
+    public InvestHistoryAdapter(Context context, OnLoadMoreListener onLoadMoreListener) {
         this.context = context;
         this.onLoadMoreListener = onLoadMoreListener;
     }
@@ -61,18 +61,18 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryViewHold
     }
 
     @Override
-    public void addItems(List<LoanHistory> loanHistories) {
-        this.loanHistories.addAll(loanHistories);
+    public void addItems(List<InvestHistory> investHistories) {
+        this.investHistories.addAll(investHistories);
     }
 
     @Override
-    public LoanHistory getItem(int position) {
-        return loanHistories.get(position);
+    public InvestHistory getItem(int position) {
+        return investHistories.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return loanHistories != null ? loanHistories.size() : 0;
+        return investHistories != null ? investHistories.size() : 0;
     }
 
     @Override
@@ -82,16 +82,15 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryViewHold
 
     @NonNull
     @Override
-    public LoanHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loan_history, parent, false);
-        return new LoanHistoryViewHolder(view, onBasicItemClickListener);
+    public InvestHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_invest_history, parent, false);
+        return new InvestHistoryViewHolder(view, onBasicItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LoanHistoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InvestHistoryViewHolder holder, int position) {
         if(holder == null) return;
-        LogUtils.logInfo(position + " &&&&&&&&&&&& ");
-        holder.onBind(loanHistories.get(position), position);
+        holder.onBind(investHistories.get(position), position);
     }
 
     @Override
