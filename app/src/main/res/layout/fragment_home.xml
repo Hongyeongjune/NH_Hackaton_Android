@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:weightSum="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#AAAAAA"
+                android:orientation="vertical"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_home_deposit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:text="예치금"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tv_home_deposit_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:text="0원"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:gravity="center_vertical" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_home_invest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="투자 신청"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_home_invest_history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="투자 현황"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_home_loan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="대출 신청"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_home_loan_history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="대출 현황"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_lately_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
