@@ -9,13 +9,14 @@ import android.os.Bundle;
 import com.nhhackaton.R;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.intro.presenter.IntroContract;
+import com.nhhackaton.view.intro.presenter.IntroPresenter;
 import com.nhhackaton.view.main.MainActivity;
-import com.nhhackaton.view.main.presenter.MainContract;
 import com.nhhackaton.view.signin.SignInActivity;
 
 public class IntroActivity extends AppCompatActivity implements IntroContract.View{
 
     private Context context;
+    private IntroContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,11 @@ public class IntroActivity extends AppCompatActivity implements IntroContract.Vi
 
     private void init() {
         context = getApplicationContext();
+        presenter = new IntroPresenter(this);
 
         loading();
+
+        presenter.confirmAutoSignIn(context);
     }
 
     private void loading() {
