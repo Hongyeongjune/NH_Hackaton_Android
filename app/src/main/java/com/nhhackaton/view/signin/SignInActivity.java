@@ -67,7 +67,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         SharedPreferencesUtils.writeMemberToInformation(context, signIn);
 
         if(cbAutoSignIn.isChecked()) {
-            // 자동 로그인
+            SharedPreferencesUtils.writeAutoSignInTo(context);
         }
 
         Intent intent = new Intent(context, MainActivity.class);
