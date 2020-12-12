@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
 
 import com.nhhackaton.R;
+import com.nhhackaton.network.fcm.MyFirebaseMessagingService;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.intro.presenter.IntroContract;
 import com.nhhackaton.view.intro.presenter.IntroPresenter;
@@ -18,6 +21,7 @@ public class IntroActivity extends AppCompatActivity implements IntroContract.Vi
     private Context context;
     private IntroContract.Presenter presenter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +31,16 @@ public class IntroActivity extends AppCompatActivity implements IntroContract.Vi
     }
 
     private void init() {
+
+        MyFirebaseMessagingService.getFcmToekn();
+
         context = getApplicationContext();
         presenter = new IntroPresenter(this);
 
         loading();
 
         presenter.confirmAutoSignIn(context);
+
     }
 
     private void loading() {
