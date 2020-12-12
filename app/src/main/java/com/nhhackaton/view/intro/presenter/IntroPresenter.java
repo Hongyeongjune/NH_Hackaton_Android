@@ -15,10 +15,10 @@ public class IntroPresenter implements IntroContract.Presenter {
     @Override
     public void confirmAutoSignIn(Context context) {
         if(SharedPreferencesUtils.readAutoSignInFromToken(context)) {
-            view.startMainActivityByToken();
+            view.startMainActivity();
         }
         else {
-            view.startSignInActivityByToken();
+            view.startSignInActivity();
         }
     }
 }
