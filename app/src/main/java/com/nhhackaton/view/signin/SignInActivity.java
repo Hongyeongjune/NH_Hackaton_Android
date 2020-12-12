@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.SignIn.SignIn;
@@ -28,6 +29,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     private Button btnSignUp;
     private CheckBox cbAutoSignIn;
     private SignInContract.Presenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

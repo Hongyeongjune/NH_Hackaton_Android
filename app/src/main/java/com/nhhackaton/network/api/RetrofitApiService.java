@@ -1,6 +1,7 @@
 package com.nhhackaton.network.api;
 
 import com.nhhackaton.data.DepositMoney.DepositMoney;
+import com.nhhackaton.data.Invest.Invest;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
 import com.nhhackaton.data.LatelyHistory.LatelyHistory;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
@@ -26,6 +27,11 @@ public interface RetrofitApiService {
     @POST("/")
     Call<DepositMoney> callReadDepositMoney(@Body String message);
 
+    /**
+     * 투자 신청
+     */
+    @POST("/")
+    Call<Void> callApplyMoney(@Body Invest invest);
 
     /**
      * 투자 현황 조회
