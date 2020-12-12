@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,11 +48,17 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
         presenter = new SignInPresenter(this, SignInRepository.getInstance());
 
-        btnSignIn.setOnClickListener(v -> presenter.callSignIn(
-                etEmail.getText().toString(), etPassword.getText().toString()
-        ));
+//        btnSignIn.setOnClickListener(v -> presenter.callSignIn(
+//                etEmail.getText().toString(), etPassword.getText().toString()
+//        ));
+        btnSignIn.setOnClickListener(v -> startSignInActivity());
 
         btnSignUp.setOnClickListener(v -> startSignUpActivity());
+    }
+
+    private void startSignInActivity() {
+        Intent intent = new Intent(context, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
