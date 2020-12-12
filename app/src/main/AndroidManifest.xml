@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.fcmalert.FcmAlertDialog"></activity>
-        <activity android:name=".view.loanhistory.LoanHistoryActivity" />
-        <activity android:name=".view.investhistory.InvestHistoryActivity" />
+        <activity android:name=".view.fcmalert.FcmAlertDialog"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".view.investhistory.InvestHistoryFragment" />
         <activity
             android:name=".view.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".view.signup.SignUpActivity" />
+        <activity android:name=".view.signin.SignInActivity" />
+        <activity android:name=".view.intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.signup.SignUpActivity" />
-        <activity android:name=".view.signin.SignInActivity" />
-        <activity android:name=".view.intro.IntroActivity" />
 
         <service
             android:name=".network.fcm.MyFirebaseMessagingService"

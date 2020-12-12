@@ -37,7 +37,7 @@ public class LoanHistoryRemoteDataSource implements LoanHistorySource {
 
             @Override
             public void onFailure(Call<LoanPagingResponse> call, Throwable t) {
-
+                listener.onFail("통신에 실패하였습니다.");
             }
         });
     }

@@ -5,7 +5,7 @@ import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 public interface LoanHistorySource {
 
     interface LoanHistoryApiListener {
-        void onSuccess(LoanPagingResponse investPagingResponse);
+        void onSuccess(LoanPagingResponse loanPagingResponse);
         void onFail(String message);
     }
 
