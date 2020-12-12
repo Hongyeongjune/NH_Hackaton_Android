@@ -5,6 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/drawer_menu_home"
+            android:title="홈으로" />
+        <item
             android:id="@+id/drawer_menu_information"
             android:title="개인 정보 관리" />
         <item
