@@ -6,6 +6,7 @@ import com.nhhackaton.data.LatelyHistory.LatelyHistory;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
+import com.nhhackaton.data.loan.LoanApply;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -39,5 +40,9 @@ public interface RetrofitApiService {
     @POST("/")
     Call<LatelyPagingResponse> callReadLatelyHistory();
 
-
+    /**
+     * 대출 신청
+     */
+    @POST("/")
+    Call<LoanApply> callLoanApply(@Body LoanApply loanApply);
 }
