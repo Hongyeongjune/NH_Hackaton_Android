@@ -3,6 +3,7 @@ package com.nhhackaton.network.api;
 import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
+import com.nhhackaton.data.loan.LoanApply;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,4 +30,10 @@ public interface RetrofitApiService {
      */
     @POST("/")
     Call<InvestPagingResponse> callReadInvestHistory(@Body int pageNo);
+
+    /**
+     * 대출 신청
+     */
+    @POST("/")
+    Call<LoanApply> callLoanApply(@Body LoanApply loanApply);
 }

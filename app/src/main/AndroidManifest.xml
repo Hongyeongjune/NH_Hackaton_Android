@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nhhackaton">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.investhistory.InvestHistoryActivity">
+        <activity android:name=".view.loan.LoanActivity">
         </activity>
         <activity
             android:name=".view.main.MainActivity"
@@ -22,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.signup.SignUpActivity" />
+<!--        <activity android:name=".view.signup.SignUpActivity" />-->
         <activity android:name=".view.signin.SignInActivity" />
         <activity android:name=".view.intro.IntroActivity" />
     </application>
