@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.nhhackaton.R;
 import com.nhhackaton.view.home.HomeFragment;
 import com.nhhackaton.view.investhistory.InvestHistoryFragment;
+import com.nhhackaton.view.loan.LoanFragment;
 import com.nhhackaton.view.loanhistory.LoanHistoryFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -73,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dlSideMenu.closeDrawer(GravityCompat.START);
                 break;
             case R.id.drawer_menu_loan:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.ll_main, LoanFragment.createFragment())
+                        .commit();
+                invalidateOptionsMenu();
+                dlSideMenu.closeDrawer(GravityCompat.START);
                 break;
             case R.id.drawer_menu_loan_history:
                 getSupportFragmentManager().beginTransaction()
