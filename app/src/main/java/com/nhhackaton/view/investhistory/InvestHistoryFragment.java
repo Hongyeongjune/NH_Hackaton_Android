@@ -1,6 +1,8 @@
 package com.nhhackaton.view.investhistory;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,41 +10,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.InvestHistory.InvestHistory;
 import com.nhhackaton.data.InvestHistory.source.InvestHistoryRepository;
 import com.nhhackaton.listener.OnLoadMoreListener;
-import com.nhhackaton.util.LogUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.investhistory.adapter.InvestHistoryAdapter;
 import com.nhhackaton.view.investhistory.presenter.InvestHistoryContract;
 import com.nhhackaton.view.investhistory.presenter.InvestHistoryPresenter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class InvestHistoryActivity extends AppCompatActivity implements OnLoadMoreListener, InvestHistoryContract.View {
+public class InvestHistoryFragment extends Fragment implements OnLoadMoreListener, InvestHistoryContract.View {
 
     private Context context;
     private RecyclerView recyclerView;
     private InvestHistoryAdapter investHistoryAdapter;
-    private List<InvestHistory> investHistories = new ArrayList<>();
 
     private InvestHistoryContract.Presenter presenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invest_history);
-
-        init();
+    public static InvestHistoryFragment createFragment() {
+        InvestHistoryFragment fragment = new InvestHistoryFragment();
+        return fragment;
     }
 
-    private void init() {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = (ViewGroup) inflater.inflate(R.layout.fragment_invest_history, container, false);
+        init(view);
 
-        context = getApplicationContext();
-        recyclerView = (RecyclerView) findViewById(R.id.rv_invest_history);
+        return view;
+    }
+
+    private void init(View view) {
+
+        context = view.getContext();
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_invest_history);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         investHistoryAdapter = new InvestHistoryAdapter(context, this);
@@ -57,8 +63,6 @@ public class InvestHistoryActivity extends AppCompatActivity implements OnLoadMo
         investHistoryAdapter.setRecyclerView(recyclerView);
         recyclerView.setLayoutManager(linearLayoutManager);
         investHistoryAdapter.setLinearLayoutManager(linearLayoutManager);
-        investHistoryAdapter.addItems(investHistories);
-        investHistoryAdapter.notifyAdapter();
 
         presenter = new InvestHistoryPresenter(this, InvestHistoryRepository.getInstance());
         presenter.setInvestHistoryAdapterModel(investHistoryAdapter);
