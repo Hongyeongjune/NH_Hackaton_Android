@@ -6,12 +6,12 @@ import com.nhhackaton.data.SignIn.source.SignInSource;
 
 public class SignInPresenter implements SignInContract.Presenter{
 
-    private SignInContract.View view;
-    private final SignInRepository signInRepository;
+        private SignInContract.View view;
+        private final SignInRepository signInRepository;
 
     public SignInPresenter(SignInContract.View view, SignInRepository signInRepository) {
-        this.view = view;
-        this.signInRepository = signInRepository;
+            this.view = view;
+            this.signInRepository = signInRepository;
     }
 
     @Override

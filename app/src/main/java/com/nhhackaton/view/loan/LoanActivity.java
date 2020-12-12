@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nhhackaton.R;
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.util.LogUtils;
+import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.loan.presenter.LoanContract;
 import com.nhhackaton.view.main.MainActivity;
 import com.nhhackaton.view.signin.presenter.SignInContract;
@@ -366,6 +367,6 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void showErrorMessage(String message) {
-
+        ToastUtils.showToast(context, message);
     }
 }
