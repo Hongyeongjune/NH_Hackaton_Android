@@ -1,14 +1,16 @@
-package com.nhhackaton;
+package com.nhhackaton.view.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class NHActivity extends AppCompatActivity {
+import com.nhhackaton.R;
+
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nh);
+        setContentView(R.layout.activity_sign_up);
     }
 }
