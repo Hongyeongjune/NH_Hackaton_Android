@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.DepositMoney.source.DepositMoneyRepository;
+import com.nhhackaton.data.InvestHistory.InvestHistory;
 import com.nhhackaton.data.LatelyHistory.source.LatelyHistoryRepository;
 import com.nhhackaton.listener.OnBasicItemClickListener;
 import com.nhhackaton.listener.OnLoadMoreListener;
@@ -19,6 +20,10 @@ import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.home.adapter.LatelyHistoryAdapter;
 import com.nhhackaton.view.home.presenter.HomeContract;
 import com.nhhackaton.view.home.presenter.HomePresenter;
+import com.nhhackaton.view.invest.InvestFragment;
+import com.nhhackaton.view.investhistory.InvestHistoryFragment;
+import com.nhhackaton.view.loan.LoanFragment;
+import com.nhhackaton.view.loanhistory.LoanHistoryFragment;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -61,6 +66,35 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         btnInvestHistory = (Button) view.findViewById(R.id.btn_home_invest_history);
         btnLoan = (Button) view.findViewById(R.id.btn_home_loan);
         btnLoanHistory = (Button) view.findViewById(R.id.btn_home_loan_history);
+
+
+        btnInvest.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ll_main, InvestFragment.createFragment())
+                    .commit();
+            getActivity().invalidateOptionsMenu();
+        });
+
+        btnInvestHistory.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ll_main, InvestHistoryFragment.createFragment())
+                    .commit();
+            getActivity().invalidateOptionsMenu();
+        });
+
+        btnLoan.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ll_main, LoanFragment.createFragment())
+                    .commit();
+            getActivity().invalidateOptionsMenu();
+        });
+
+        btnLoanHistory.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ll_main, LoanHistoryFragment.createFragment())
+                    .commit();
+            getActivity().invalidateOptionsMenu();
+        });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_home_lately_history);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);

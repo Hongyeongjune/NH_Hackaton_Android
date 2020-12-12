@@ -5,36 +5,37 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.loan.LoanApply;
-import com.nhhackaton.util.LogUtils;
+import com.nhhackaton.view.invest.InvestFragment;
 import com.nhhackaton.view.loan.presenter.LoanContract;
 import com.nhhackaton.view.main.MainActivity;
-import com.nhhackaton.view.signin.presenter.SignInContract;
 
 import java.io.File;
 
+import static android.app.Activity.RESULT_OK;
 
-public class LoanActivity extends AppCompatActivity implements View.OnClickListener, LoanContract.View {
+
+public class LoanFragment extends Fragment implements View.OnClickListener, LoanContract.View {
 
     private Context context;
 
@@ -61,45 +62,52 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
     private LoanApply loanApply;    //TODO: send dto to server
     private StringBuilder sbFileUrl = new StringBuilder();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loan);
 
-        init();
+    public static LoanFragment createFragment() {
+        LoanFragment fragment = new LoanFragment();
+        return fragment;
     }
 
-    private void init() {
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        View view = (ViewGroup) inflater.inflate(R.layout.fragment_loan, container, false);
+        init(view);
 
-        context = getApplicationContext();
+        return view;
+    }
+
+    private void init(View view) {
+
+        context = view.getContext();
 
         //wrap
-        layoutType3 = (LinearLayout) findViewById(R.id.layout_type3);
-        layoutType4 = (LinearLayout) findViewById(R.id.layout_type4);
-        layoutType5 = (LinearLayout) findViewById(R.id.layout_type5);
-        layoutType6 = (LinearLayout) findViewById(R.id.layout_type6);
-        layoutType7 = (LinearLayout) findViewById(R.id.layout_type7);
-        layoutType8 = (LinearLayout) findViewById(R.id.layout_type8);
+        layoutType3 = (LinearLayout) view.findViewById(R.id.layout_type3);
+        layoutType4 = (LinearLayout) view.findViewById(R.id.layout_type4);
+        layoutType5 = (LinearLayout) view.findViewById(R.id.layout_type5);
+        layoutType6 = (LinearLayout) view.findViewById(R.id.layout_type6);
+        layoutType7 = (LinearLayout) view.findViewById(R.id.layout_type7);
+        layoutType8 = (LinearLayout) view.findViewById(R.id.layout_type8);
 
         //file layout
-        txtFile1 = (TextView) findViewById(R.id.txt_file1);
-        txtFile2 = (TextView) findViewById(R.id.txt_file2);
-        txtFile3 = (TextView) findViewById(R.id.txt_file3);
-        txtFile4 = (TextView) findViewById(R.id.txt_file4);
-        txtFile5 = (TextView) findViewById(R.id.txt_file5);
-        txtFile6 = (TextView) findViewById(R.id.txt_file6);
-        txtFile7 = (TextView) findViewById(R.id.txt_file7);
-        txtFile8 = (TextView) findViewById(R.id.txt_file8);
-        txtFile9 = (TextView) findViewById(R.id.txt_file9);
-        btnGallery1 = (ImageButton) findViewById(R.id.btn_gallery1);
-        btnGallery2 = (ImageButton) findViewById(R.id.btn_gallery2);
-        btnGallery3 = (ImageButton) findViewById(R.id.btn_gallery3);
-        btnGallery4 = (ImageButton) findViewById(R.id.btn_gallery4);
-        btnGallery5 = (ImageButton) findViewById(R.id.btn_gallery5);
-        btnGallery6 = (ImageButton) findViewById(R.id.btn_gallery6);
-        btnGallery7 = (ImageButton) findViewById(R.id.btn_gallery7);
-        btnGallery8 = (ImageButton) findViewById(R.id.btn_gallery8);
-        btnGallery9 = (ImageButton) findViewById(R.id.btn_gallery9);
+        txtFile1 = (TextView) view.findViewById(R.id.txt_file1);
+        txtFile2 = (TextView) view.findViewById(R.id.txt_file2);
+        txtFile3 = (TextView) view.findViewById(R.id.txt_file3);
+        txtFile4 = (TextView) view.findViewById(R.id.txt_file4);
+        txtFile5 = (TextView) view.findViewById(R.id.txt_file5);
+        txtFile6 = (TextView) view.findViewById(R.id.txt_file6);
+        txtFile7 = (TextView) view.findViewById(R.id.txt_file7);
+        txtFile8 = (TextView) view.findViewById(R.id.txt_file8);
+        txtFile9 = (TextView) view.findViewById(R.id.txt_file9);
+        btnGallery1 = (ImageButton) view.findViewById(R.id.btn_gallery1);
+        btnGallery2 = (ImageButton) view.findViewById(R.id.btn_gallery2);
+        btnGallery3 = (ImageButton) view.findViewById(R.id.btn_gallery3);
+        btnGallery4 = (ImageButton) view.findViewById(R.id.btn_gallery4);
+        btnGallery5 = (ImageButton) view.findViewById(R.id.btn_gallery5);
+        btnGallery6 = (ImageButton) view.findViewById(R.id.btn_gallery6);
+        btnGallery7 = (ImageButton) view.findViewById(R.id.btn_gallery7);
+        btnGallery8 = (ImageButton) view.findViewById(R.id.btn_gallery8);
+        btnGallery9 = (ImageButton) view.findViewById(R.id.btn_gallery9);
 
         btnGallery1.setOnClickListener(this);
         btnGallery2.setOnClickListener(this);
@@ -113,21 +121,21 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
 
         //info layout
 
-        txtSelect = (TextView) findViewById(R.id.txt_select);
-        edtInput = (EditText) findViewById(R.id.edt_input);
-        rdGrpMonth = (RadioGroup) findViewById(R.id.rd_grp_month);
-        rdBtnMonth12 = (RadioButton) findViewById(R.id.rd_btn_month_12);
-        rdBtnMonth24 = (RadioButton) findViewById(R.id.rd_btn_month_24);
-        rdGrpPaymentMethod = (RadioGroup) findViewById(R.id.rd_grp_payment_method);
-        rdBtnInput = (RadioButton) findViewById(R.id.rd_btn_input);
-        rdBtnSelect = (RadioButton) findViewById(R.id.rd_btn_select);
-        rdGrpWorkStat = (RadioGroup) findViewById(R.id.rd_grp_work_stat);
-        rdBtnEmployed = (RadioButton) findViewById(R.id.rd_btn_employed);
-        rdBtnUnemployed = (RadioButton) findViewById(R.id.rd_btn_unemployed);
-        rdGrpMarried = (RadioGroup) findViewById(R.id.rd_grp_married);
-        rdBtnMarried = (RadioButton) findViewById(R.id.rd_btn_married);
-        rdBtnUnmarried = (RadioButton) findViewById(R.id.rd_btn_unmarried);
-        ckBusinessmanYn = (CheckBox) findViewById(R.id.ck_businessmanYn);
+        txtSelect = (TextView) view.findViewById(R.id.txt_select);
+        edtInput = (EditText) view.findViewById(R.id.edt_input);
+        rdGrpMonth = (RadioGroup) view.findViewById(R.id.rd_grp_month);
+        rdBtnMonth12 = (RadioButton) view.findViewById(R.id.rd_btn_month_12);
+        rdBtnMonth24 = (RadioButton) view.findViewById(R.id.rd_btn_month_24);
+        rdGrpPaymentMethod = (RadioGroup) view.findViewById(R.id.rd_grp_payment_method);
+        rdBtnInput = (RadioButton) view.findViewById(R.id.rd_btn_input);
+        rdBtnSelect = (RadioButton) view.findViewById(R.id.rd_btn_select);
+        rdGrpWorkStat = (RadioGroup) view.findViewById(R.id.rd_grp_work_stat);
+        rdBtnEmployed = (RadioButton) view.findViewById(R.id.rd_btn_employed);
+        rdBtnUnemployed = (RadioButton) view.findViewById(R.id.rd_btn_unemployed);
+        rdGrpMarried = (RadioGroup) view.findViewById(R.id.rd_grp_married);
+        rdBtnMarried = (RadioButton) view.findViewById(R.id.rd_btn_married);
+        rdBtnUnmarried = (RadioButton) view.findViewById(R.id.rd_btn_unmarried);
+        ckBusinessmanYn = (CheckBox) view.findViewById(R.id.ck_businessmanYn);
 
         //rdGrp listener
         rdGrpMonth.setOnCheckedChangeListener(rdGrpMonthChangeListener);
@@ -157,7 +165,7 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
         rdBtnUnmarried.setOnClickListener(rdBtnClickListener);
 
         //bottom layout
-        btnLoanApply = (Button) findViewById(R.id.btn_loan_apply);
+        btnLoanApply = (Button) view.findViewById(R.id.btn_loan_apply);
         btnLoanApply.setOnClickListener(v -> presenter.callLoanApply(
                 //TODO: loanApply set
                 loanApply
@@ -177,7 +185,7 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
 
     private String getRealPathFromURI(Uri contentURI) {
         String filePath;
-        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        Cursor cursor = getActivity().getContentResolver().query(contentURI, null, null, null, null);
         if (cursor == null) {
             filePath = contentURI.getPath();
 
@@ -191,7 +199,7 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode != RESULT_OK) {
@@ -274,7 +282,7 @@ public class LoanActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         //다이얼로그 창
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(context)
                 .setTitle("사진 선택")
                 .setNegativeButton("취소", cancelListener)
                 .setPositiveButton("파일 선택", albumListener)
