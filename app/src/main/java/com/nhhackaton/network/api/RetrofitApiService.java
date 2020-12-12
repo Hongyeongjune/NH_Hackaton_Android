@@ -7,6 +7,7 @@ import com.nhhackaton.data.LatelyHistory.LatelyHistory;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
+import com.nhhackaton.data.SignUp.SignUp;
 import com.nhhackaton.data.loan.LoanApply;
 
 import retrofit2.Call;
@@ -21,6 +22,11 @@ public interface RetrofitApiService {
     @POST("/")
     Call<SignIn> callSignIn(@Body SignIn signIn);
 
+    /**
+     * 회원가입
+     */
+    @POST("/")
+    Call<SignUp> callSignUp(@Body SignUp signUp);
 
     /**
      * 예치금 조회
