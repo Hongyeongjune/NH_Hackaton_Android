@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1038220859518",
+    "project_id": "nhhackathon-d738f",
+    "storage_bucket": "nhhackathon-d738f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038220859518:android:8681e0a3495e41399b202f",
+        "android_client_info": {
+          "package_name": "com.nhhackaton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038220859518-0jhqbqtknpr60ju93p76f1jld5kloqif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nhhackaton",
+            "certificate_hash": "44f834fcec8dd8c9a089179738f2551a7dfac9e0"
+          }
+        },
+        {
+          "client_id": "1038220859518-6u02jloco2cs48hqp7mmltr6khitmj39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp70qOl2jNr5O711-BSekBBJ1JxAg4mBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038220859518-6u02jloco2cs48hqp7mmltr6khitmj39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
