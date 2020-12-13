@@ -10,6 +10,15 @@ public class LoanApply {
     private String studentIdentity;
     private String term;
 
+    public LoanApply(String loanAmount, String studentIdentity, String term) {
+        this.loanAmount = loanAmount;
+        this.studentIdentity = studentIdentity;
+        this.term = term;
+    }
+
+    public LoanApply() {
+    }
+
     public String getLoanAmount() {
         return loanAmount;
     }
