@@ -7,11 +7,11 @@ import com.nhhackaton.data.SignIn.SignIn;
 
 public class SharedPreferencesUtils {
 
-    public static void writeMemberToInformation(Context context, SignIn signIn) {
+    public static void writeMemberToInformation(Context context, String identity) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("NH_HACKATON", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("MEMBER_EMAIL", signIn.getEmail());
+        editor.putString("MEMBER_IDENTITY", identity);
         editor.apply();
     }
 
@@ -19,7 +19,7 @@ public class SharedPreferencesUtils {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("NH_HACKATON", Context.MODE_PRIVATE);
 
-        return sharedPreferences.getString("MEMBER_EMAIL", null);
+        return sharedPreferences.getString("MEMBER_IDENTITY", null);
 
     }
 

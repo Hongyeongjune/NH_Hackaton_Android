@@ -1,11 +1,36 @@
 package com.nhhackaton.data.loan;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
 public class LoanApply {
 
-    private String info1;
-    private String info2;
+    private String loanAmount;
+    private String studentIdentity;
+    private String term;
 
+    public String getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(String loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public String getStudentIdentity() {
+        return studentIdentity;
+    }
+
+    public void setStudentIdentity(String studentIdentity) {
+        this.studentIdentity = studentIdentity;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
 }

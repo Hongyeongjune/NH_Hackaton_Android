@@ -18,7 +18,7 @@ public class SignInPresenter implements SignInContract.Presenter{
     public void callSignIn(String email, String password) {
 
         SignIn signIn = SignIn.builder()
-                .email(email)
+                .identity(email)
                 .password(password)
                 .build();
 
@@ -26,8 +26,8 @@ public class SignInPresenter implements SignInContract.Presenter{
 
             signInRepository.callSignIn(signIn, new SignInSource.SignInApiListener() {
                 @Override
-                public void onSuccess(SignIn signIn) {
-                    view.startMainActivity(signIn);
+                public void onSuccess(String identity) {
+                    view.startMainActivity(identity);
                 }
 
                 @Override
@@ -37,7 +37,7 @@ public class SignInPresenter implements SignInContract.Presenter{
             });
         }
 
-        view.showErrorMessage("내용을 입력해주세요");
+        else view.showErrorMessage("내용을 입력해주세요");
 
     }
 }

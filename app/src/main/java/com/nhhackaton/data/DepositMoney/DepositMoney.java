@@ -6,12 +6,10 @@ import lombok.Getter;
 @Getter
 public class DepositMoney {
 
-    private String message;
+    private String depositPrice;
 
     @Builder
-    public DepositMoney(String message) {
-        this.message = message;
+    public DepositMoney(String depositPrice) {
+        this.depositPrice = depositPrice;
     }
-
-
 }

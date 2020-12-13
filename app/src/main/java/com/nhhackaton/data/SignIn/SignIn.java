@@ -9,12 +9,12 @@ import lombok.Getter;
 @Getter
 public class SignIn {
 
-    private String email;
+    private String identity;
     private String password;
 
     @Builder
-    public SignIn(String email, String password) {
-        this.email = email;
+    public SignIn(String identity, String password) {
+        this.identity = identity;
         this.password = password;
     }
 

@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Invest {
 
-    private String money;
+    private String investPrice;
 
     @Builder
-    public Invest(String money) {
-        this.money = money;
+    public Invest(String investPrice) {
+        this.investPrice = investPrice;
     }
 }

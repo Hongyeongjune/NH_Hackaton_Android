@@ -26,8 +26,12 @@ import androidx.fragment.app.Fragment;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.loan.LoanApply;
+import com.nhhackaton.data.loan.source.LoanRepository;
+import com.nhhackaton.util.LogUtils;
+import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.view.invest.InvestFragment;
 import com.nhhackaton.view.loan.presenter.LoanContract;
+import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
 
 import java.io.File;
@@ -42,7 +46,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     private LinearLayout layoutType3, layoutType4, layoutType5, layoutType6, layoutType7, layoutType8;
 
     private TextView txtFile1, txtFile2, txtFile3, txtFile4, txtFile5, txtFile6, txtFile7, txtFile8, txtFile9, txtSelect;
-    private EditText edtInput;
+    private EditText edtInput, edtAmount;
     private ImageButton btnGallery1, btnGallery2, btnGallery3, btnGallery4, btnGallery5, btnGallery6, btnGallery7, btnGallery8, btnGallery9;
     private Button btnLoanApply;
 
@@ -59,7 +63,8 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     private Boolean isEmployed;
 
     private LoanContract.Presenter presenter;
-    private LoanApply loanApply;    //TODO: send dto to server
+    private LoanApply loanApply = new LoanApply();    //TODO: send dto to server
+
     private StringBuilder sbFileUrl = new StringBuilder();
 
 
@@ -123,6 +128,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
 
         txtSelect = (TextView) view.findViewById(R.id.txt_select);
         edtInput = (EditText) view.findViewById(R.id.edt_input);
+        edtAmount = (EditText) view.findViewById(R.id.edt_amount);
         rdGrpMonth = (RadioGroup) view.findViewById(R.id.rd_grp_month);
         rdBtnMonth12 = (RadioButton) view.findViewById(R.id.rd_btn_month_12);
         rdBtnMonth24 = (RadioButton) view.findViewById(R.id.rd_btn_month_24);
@@ -164,13 +170,19 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
         rdBtnMarried.setOnClickListener(rdBtnClickListener);
         rdBtnUnmarried.setOnClickListener(rdBtnClickListener);
 
+
+        //data set
+//        loanApply.setStudentIdentity(SharedPreferencesUtils.readMemberFromEmail(context));
+        loanApply.setStudentIdentity("admin");
+        loanApply.setTerm("12");
+        loanApply.setLoanAmount(edtAmount.getText().toString());
+
+        presenter = new LoanPresenter(this, LoanRepository.getInstance());
+
         //bottom layout
         btnLoanApply = (Button) view.findViewById(R.id.btn_loan_apply);
         btnLoanApply.setOnClickListener(v -> presenter.callLoanApply(
-                //TODO: loanApply set
                 loanApply
-
-
         ));
 
     }
@@ -216,8 +228,6 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
                 intent.setDataAndType(mImageCaptureUri, "image/*");
 
                 File file = new File(getRealPathFromURI(mImageCaptureUri));
-
-
 
                 if("1".equals(selectedBtnNm)){
                     txtFile1.setText(file.getName());
@@ -294,9 +304,9 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId == R.id.rd_btn_month_12){ //TODO: dto set
-
+                loanApply.setTerm("12");
             } else if(checkedId == R.id.rd_btn_month_24){
-
+                loanApply.setTerm("24");
             }
         }
     };
@@ -309,6 +319,9 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
                 edtInput.setVisibility(View.VISIBLE);
             } else if(checkedId == R.id.rd_btn_select){
                 edtInput.setVisibility(View.GONE);
+
+
+
                 txtSelect.setText("사용자 계좌 정보 자동입력"); //TODO: 사용자 계좌 정보 자동입력
                 txtSelect.setVisibility(View.VISIBLE);
             }

@@ -21,7 +21,7 @@ public class DepositMoneyRepository implements DepositMoneySource {
     }
 
     @Override
-    public void callReadDepositMoney(String message, VirtualAccountApiListener listener) {
-        depositMoneyRemoteDataSource.callReadDepositMoney(message, listener);
+    public void callReadDepositMoney(String identity, VirtualAccountApiListener listener) {
+        depositMoneyRemoteDataSource.callReadDepositMoney(identity, listener);
     }
 }

@@ -8,6 +8,7 @@ import com.nhhackaton.data.LatelyHistory.LatelyHistory;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
+import com.nhhackaton.data.SignIn.SignInResponse;
 import com.nhhackaton.data.SignUp.SignUp;
 import com.nhhackaton.data.loan.LoanApply;
 
@@ -22,8 +23,8 @@ public interface RetrofitApiService {
     /**
      * 로그인
      */
-    @POST("/")
-    Call<SignIn> callSignIn(@Body SignIn signIn);
+    @POST("member/signin")
+    Call<SignInResponse> callSignIn(@Body SignIn signIn);
 
     /**
      * 회원가입
@@ -40,14 +41,14 @@ public interface RetrofitApiService {
     /**
      * 예치금 조회
      */
-    @POST("/")
-    Call<DepositMoney> callReadDepositMoney(@Body String message);
+    @GET("deposit/{identity}")
+    Call<DepositMoney> callReadDepositMoney(@Path("identity") String identity);
 
     /**
      * 투자 신청
      */
-    @POST("/")
-    Call<Void> callApplyMoney(@Body Invest invest);
+    @POST("deposit/apply-invest/{identity}")
+    Call<Void> callApplyMoney(@Path("identity") String identity, @Body Invest invest);
 
     /**
      * 투자 현황 조회
