@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="280dp"
-    android:layout_height="100dp"
+    android:layout_width="400dp"
+    android:layout_height="200dp"
     tools:context=".view.fcmalert.FcmAlertDialog"
     android:orientation="vertical"
     android:layout_weight="1">
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
-        android:background="#AAAAAA">
+        android:background="#14349B">
 
         <TextView
             android:id="@+id/tv_fcm_alert_title"
@@ -32,6 +32,7 @@
         android:layout_weight="0.6"
         android:gravity="center"
         android:layout_gravity="center"
+        android:background="#FFFFFF"
         android:hint="Body"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

@@ -128,13 +128,15 @@ public class HomePresenter implements HomeContract.Presenter, OnBasicItemClickLi
 
                 List<LatelyHistory> temp = new ArrayList<>();
 
-                for(int i=0; i<5; i++) {
-                    temp.add(adapterModel.getItem(i));
+                if(adapterModel.getCount() >= 5) {
+                    for (int i = 0; i < 5; i++) {
+                        temp.add(adapterModel.getItem(i));
+                    }
+
+                    adapterModel.clearItems();
+
+                    adapterModel.addItems(temp);
                 }
-
-                adapterModel.clearItems();
-
-                adapterModel.addItems(temp);
 
                 adapterView.notifyAdapter();
                 adapterModel.setMoreLoading(false);

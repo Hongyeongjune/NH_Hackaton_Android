@@ -51,7 +51,7 @@ public class AccountActivity extends AppCompatActivity implements AccountContrac
 
         btnAccountNumber.setOnClickListener(v ->
                 presenter.callSetAccount(
-                        SharedPreferencesUtils.readMemberFromEmail(context), etAccountNumber.getText().toString(), "011"
+                        "dudwl", etAccountNumber.getText().toString(), "011"
                 )
         );
 

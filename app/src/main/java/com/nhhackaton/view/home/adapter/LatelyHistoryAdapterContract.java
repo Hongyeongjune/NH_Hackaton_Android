@@ -18,6 +18,8 @@ public interface LatelyHistoryAdapterContract {
         void setMoreLoading(boolean isMoreLoading);
         void sortItems();
         void clearItems();
+        int getCount();
+
     }
 
 }

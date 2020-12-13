@@ -3,6 +3,7 @@ package com.nhhackaton.data.SignUp.source;
 import com.nhhackaton.data.SignUp.SignUp;
 
 import com.nhhackaton.network.api.RetrofitApiClient;
+import com.nhhackaton.util.LogUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +25,8 @@ public class SignUpRemoteDataSource implements SignUpSource {
     @Override
     public void callSignUp(SignUp signUp, SignUpApiListener listener) {
         Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callSignUp(signUp);
+
+        LogUtils.logInfo("생일 : " + signUp.getBirth());
 
         result.enqueue(new Callback<Void>() {
             @Override

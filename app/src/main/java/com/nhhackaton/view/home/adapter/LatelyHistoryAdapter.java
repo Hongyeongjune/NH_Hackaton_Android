@@ -97,4 +97,9 @@ public class LatelyHistoryAdapter extends RecyclerView.Adapter<LatelyHistoryView
     public void clearItems() {
         this.latelyHistories.clear();
     }
+
+    @Override
+    public int getCount() {
+        return this.latelyHistories.size();
+    }
 }
