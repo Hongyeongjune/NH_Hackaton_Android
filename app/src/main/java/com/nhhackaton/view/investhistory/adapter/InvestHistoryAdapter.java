@@ -29,6 +29,10 @@ public class InvestHistoryAdapter extends RecyclerView.Adapter<InvestHistoryView
     private boolean isMoreLoading = false;
     private boolean isLast = false;
 
+    public void setOnBasicItemClickListener(OnBasicItemClickListener onBasicItemClickListener) {
+        this.onBasicItemClickListener = onBasicItemClickListener;
+    }
+
     public InvestHistoryAdapter(Context context, OnLoadMoreListener onLoadMoreListener) {
         this.context = context;
         this.onLoadMoreListener = onLoadMoreListener;
@@ -84,7 +88,7 @@ public class InvestHistoryAdapter extends RecyclerView.Adapter<InvestHistoryView
     @Override
     public InvestHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_invest_history, parent, false);
-        return new InvestHistoryViewHolder(view, onBasicItemClickListener);
+        return new InvestHistoryViewHolder(view, onBasicItemClickListener, context);
     }
 
     @Override

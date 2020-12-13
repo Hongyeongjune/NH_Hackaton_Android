@@ -42,7 +42,7 @@ public class LatelyHistoryAdapter extends RecyclerView.Adapter<LatelyHistoryView
     @Override
     public LatelyHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lately_history, parent, false);
-        return new LatelyHistoryViewHolder(view, onBasicItemClickListener);
+        return new LatelyHistoryViewHolder(view, onBasicItemClickListener, context);
     }
 
     @Override

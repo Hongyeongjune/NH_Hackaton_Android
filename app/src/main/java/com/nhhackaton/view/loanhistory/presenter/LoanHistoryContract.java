@@ -10,7 +10,8 @@ public interface LoanHistoryContract {
     }
 
     interface Presenter {
-        void callReadInvestHistory(int pageNo);
+        void callReadLoanMoney(String identity);
+        void callReadRepayment(String identity);
         void setLoanHistoryAdapterView(LoanHistoryAdapterContract.View adapterView);
         void setLoanHistoryAdapterModel(LoanHistoryAdapterContract.Model adapterModel);
     }

@@ -1,5 +1,6 @@
 package com.nhhackaton.view.loan.presenter;
 
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.loan.LoanApply;
 
 import java.io.File;
@@ -11,6 +12,7 @@ public interface LoanContract {
     interface View {
         void showErrorMessage(String message);
         void startMainActivity();
+        void setDocumentRequests(String uri);
 
     }
 
