@@ -148,10 +148,10 @@
             <Button
                 android:id="@+id/btn_home_loan_history"
                 android:layout_width="0dp"
-                android:layout_height="65dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.35"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/home_btn_loan_history2"
+                android:background="@drawable/home_btn_loan_history3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>

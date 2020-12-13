@@ -2,31 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.4">
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2" />
+
         <TextView
             android:id="@+id/tv_invest_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="투자할 금액을 입력해주세요."
+            android:layout_width="0dp"
+            android:layout_height="166dp"
             android:layout_gravity="bottom"
+            android:layout_weight="0.6"
+            android:background="@drawable/invest_input_msg"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.36"
-        android:weightSum="1"
+        android:orientation="vertical"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"
-        android:orientation="vertical">
+        android:weightSum="1">
 
         <TextView
             android:layout_width="match_parent"
@@ -37,63 +51,71 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:weightSum="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:text=" \@ "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:gravity="center"/>
+                android:layout_height="50dp"
+                android:layout_weight="0.2"
+                android:gravity="center"
+                android:background="@drawable/home_main_money"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <EditText
                 android:id="@+id/et_invest_money"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.75"
-                android:hint="1000"
-                android:gravity="right|center"
+                android:layout_weight="0.6"
                 android:background="@null"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:gravity="right|center"
+                android:hint="1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <TextView
                 android:id="@+id/tv_invest_unit"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_weight="0.15"
-                android:text="원"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="#13349C"
+                android:background="@drawable/won1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.2"
-            android:weightSum="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-            <Button
-                android:id="@+id/btn_invest"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                android:text="투자하기"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/btn_invest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:background="@drawable/btn_1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
             <Button
                 android:id="@+id/btn_invest_account_create"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
-                android:text="지정 계좌 변경"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                android:background="@drawable/btn_2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
     </LinearLayout>
 

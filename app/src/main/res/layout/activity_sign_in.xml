@@ -4,32 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.signin.SignInActivity"
+    android:orientation="vertical"
     android:weightSum="1"
-    android:orientation="vertical">
+    tools:context=".view.signin.SignInActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.26">
-        <TextView
-            android:id="@+id/tv_sign_in_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="가입된 계정으로 로그인하세요."
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:layout_gravity="center"
+        android:layout_weight="0.45"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.35"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.55"
+                android:background="@drawable/logo"
+                />
+
+            <TextView
+                android:id="@+id/tv_sign_in_title"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.08"
+                android:layout_gravity="bottom"
+                android:background="@drawable/toolbar_title"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.36"
-        android:weightSum="1"
+        android:orientation="vertical"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"
-        android:orientation="vertical">
+        android:weightSum="1">
 
         <TextView
             android:layout_width="match_parent"
@@ -40,51 +72,55 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:weightSum="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
+                android:gravity="center"
                 android:text=" \@ "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:gravity="center"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <EditText
                 android:id="@+id/et_sign_in_email"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.85"
-                android:hint="아이디"
+                android:background="@null"
                 android:gravity="center"
-                android:background="@null"/>
+                android:hint="아이디" />
         </LinearLayout>
 
         <View
-            android:background="#555555"
             android:layout_width="match_parent"
-            android:layout_height="1dp" />
+            android:layout_height="1dp"
+            android:background="#555555" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:weightSum="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
+                android:gravity="center"
                 android:text=" \# "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:gravity="center"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <EditText
                 android:id="@+id/et_sign_in_password"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.85"
-                android:hint="비밀번호"
+                android:background="@null"
                 android:gravity="center"
-                android:background="@null"/>
+                android:hint="비밀번호" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,24 +135,27 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1" />
+
             <Button
                 android:id="@+id/btn_sign_in"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                android:text="로그인"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:layout_weight="0.4"
+                android:background="@drawable/btn_signin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.05" />
+
             <Button
                 android:id="@+id/btn_sign_in_sign_up"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.35"
-                android:text="회원가입"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:layout_weight="0.4"
+                android:background="@drawable/intro_signup"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
     </LinearLayout>
@@ -138,8 +177,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="자동 로그인"
             android:gravity="center"
+            android:text="자동 로그인"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </LinearLayout>

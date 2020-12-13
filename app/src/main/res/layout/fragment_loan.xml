@@ -26,7 +26,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="재직여부" />
 
             <LinearLayout
@@ -85,7 +84,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="결혼여부" />
 
             <LinearLayout
@@ -146,21 +144,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="주민등록등본" />
 
             <TextView
                 android:id="@+id/txt_file1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -175,21 +172,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="본인 소득금액 증명원" />
 
             <TextView
                 android:id="@+id/txt_file2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -206,21 +202,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="배우자 소득 금액 증명원" />
 
             <TextView
                 android:id="@+id/txt_file3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -237,21 +232,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="건강보험 자격득실 확인서" />
 
             <TextView
                 android:id="@+id/txt_file4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -268,21 +262,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="연봉계약서" />
 
             <TextView
                 android:id="@+id/txt_file5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -299,21 +292,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="사업자등록증" />
 
             <TextView
                 android:id="@+id/txt_file6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -330,21 +322,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="가족관계 증명서" />
 
             <TextView
                 android:id="@+id/txt_file7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -361,21 +352,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="부모 소득 금액 증명원" />
 
             <TextView
                 android:id="@+id/txt_file8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -390,21 +380,20 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="임대차계약서" />
 
             <TextView
                 android:id="@+id/txt_file9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btn_gallery9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:background="@drawable/ic_menu_gallery" />
+                android:layout_weight="0.2"
+                android:background="@drawable/btn_add_file" />
 
         </LinearLayout>
 
@@ -420,7 +409,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="대출 기간" />
 
             <RadioGroup
@@ -461,7 +449,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:gravity="center"
                 android:text="대출금 지급 방식" />
 
             <LinearLayout
@@ -533,7 +520,7 @@
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:orientation="horizontal"
-                android:layout_weight="0.5"
+                android:layout_weight="0.25"
                 android:weightSum="1"
                 >
 
@@ -541,7 +528,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.7"
-                    android:gravity="center"
                     android:text="대출금입력"
                     />
                 <EditText
@@ -557,10 +543,10 @@
             <Button
                 android:id="@+id/btn_loan_apply"
                 android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:padding="1dp"
-                android:layout_weight="0.5"
-                android:text="대출신청" />
+                android:layout_weight="0.35"
+                android:background="@drawable/btn_loan_apply2" />
         </LinearLayout>
 
     </LinearLayout>
