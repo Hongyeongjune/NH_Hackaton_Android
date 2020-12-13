@@ -6,7 +6,7 @@ public interface SignInContract {
 
     interface View {
         void showErrorMessage(String message);
-        void startMainActivity(SignIn signIn);
+        void startMainActivity(String identity);
         void startSignUpActivity();
     }
 

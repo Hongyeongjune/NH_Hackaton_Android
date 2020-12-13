@@ -14,7 +14,7 @@ public interface HomeContract {
         void callReadLatelyHistory();
         void setLatelyHistoryAdapterView(LatelyHistoryAdapterContract.View adapterView);
         void setLatelyHistoryAdapterModel(LatelyHistoryAdapterContract.Model adapterModel);
-        void callReadDepositMoney(String message);
+        void callReadDepositMoney(String identity);
     }
 
 }

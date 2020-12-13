@@ -23,7 +23,7 @@ public class InvestRepository implements InvestSource {
     }
     
     @Override
-    public void callApplyInvest(Invest invest, InvestApiListener listener) {
-        investRemoteDataSource.callApplyInvest(invest, listener);
+    public void callApplyInvest(String identity, Invest invest, InvestApiListener listener) {
+        investRemoteDataSource.callApplyInvest(identity, invest, listener);
     }
 }

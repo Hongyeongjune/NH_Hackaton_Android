@@ -5,7 +5,7 @@ import com.nhhackaton.data.SignIn.SignIn;
 public interface SignInSource {
 
     interface SignInApiListener {
-        void onSuccess(SignIn signIn);
+        void onSuccess(String identity);
         void onFail(String message);
     }
 

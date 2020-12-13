@@ -13,6 +13,7 @@ import com.nhhackaton.R;
 import com.nhhackaton.data.Account.Account;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.source.SignInRepository;
+import com.nhhackaton.util.LogUtils;
 import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.account.AccountActivity;
@@ -54,7 +55,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 //        btnSignIn.setOnClickListener(v -> presenter.callSignIn(
 //                etEmail.getText().toString(), etPassword.getText().toString()
 //        ));
-        btnSignIn.setOnClickListener(v -> startSignInActivity());
+        btnSignIn.setOnClickListener(v -> presenter.callSignIn(etEmail.getText().toString(), etPassword.getText().toString()));
 
         btnSignUp.setOnClickListener(v -> startSignUpActivity());
     }
@@ -70,9 +71,10 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     }
 
     @Override
-    public void startMainActivity(SignIn signIn) {
+    public void startMainActivity(String identity) {
 
-        SharedPreferencesUtils.writeMemberToInformation(context, signIn);
+        LogUtils.logInfo(identity);
+        SharedPreferencesUtils.writeMemberToInformation(context, identity);
 
         if(cbAutoSignIn.isChecked()) {
             SharedPreferencesUtils.writeAutoSignInTo(context);

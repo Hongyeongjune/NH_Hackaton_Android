@@ -8,5 +8,5 @@ public interface InvestSource {
         void onFail(String message);
     }
 
-    void callApplyInvest(Invest invest, InvestApiListener listener);
+    void callApplyInvest(String identity, Invest invest, InvestApiListener listener);
 }

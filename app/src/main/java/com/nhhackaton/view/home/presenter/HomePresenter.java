@@ -1,5 +1,6 @@
 package com.nhhackaton.view.home.presenter;
 
+import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.DepositMoney.source.DepositMoneyRepository;
 import com.nhhackaton.data.DepositMoney.source.DepositMoneySource;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
@@ -57,11 +58,11 @@ public class HomePresenter implements HomeContract.Presenter, OnBasicItemClickLi
     }
 
     @Override
-    public void callReadDepositMoney(String message) {
-        depositMoneyRepository.callReadDepositMoney(message, new DepositMoneySource.VirtualAccountApiListener() {
+    public void callReadDepositMoney(String identity) {
+        depositMoneyRepository.callReadDepositMoney(identity, new DepositMoneySource.VirtualAccountApiListener() {
             @Override
-            public void onSuccess(String message) {
-                view.setVirtualAccount(message);
+            public void onSuccess(DepositMoney depositMoney) {
+                view.setVirtualAccount(depositMoney.getDepositPrice());
             }
 
             @Override

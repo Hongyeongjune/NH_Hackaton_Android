@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import com.nhhackaton.R;
 import com.nhhackaton.data.Account.source.AccountRepository;
 import com.nhhackaton.data.SignIn.SignIn;
+import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.account.presenter.AccountContract;
 import com.nhhackaton.view.account.presenter.AccountPresenter;
@@ -50,7 +51,7 @@ public class AccountActivity extends AppCompatActivity implements AccountContrac
 
         btnAccountNumber.setOnClickListener(v ->
                 presenter.callSetAccount(
-                        "hong", etAccountNumber.getText().toString(), "011"
+                        SharedPreferencesUtils.readMemberFromEmail(context), etAccountNumber.getText().toString(), "011"
                 )
         );
 

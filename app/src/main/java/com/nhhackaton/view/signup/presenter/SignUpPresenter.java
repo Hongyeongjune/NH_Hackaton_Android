@@ -47,7 +47,7 @@ public class SignUpPresenter implements SignUpContract.Presenter{
             }
         }
 
-        view.showErrorMessage("내용을 입력해주세요");
+        else view.showErrorMessage("내용을 입력해주세요");
     }
 
     @Override

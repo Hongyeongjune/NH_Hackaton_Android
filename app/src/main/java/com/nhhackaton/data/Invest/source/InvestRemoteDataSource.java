@@ -3,6 +3,7 @@ package com.nhhackaton.data.Invest.source;
 import com.nhhackaton.data.Invest.Invest;
 import com.nhhackaton.data.Invest.source.InvestRemoteDataSource;
 import com.nhhackaton.network.api.RetrofitApiClient;
+import com.nhhackaton.util.LogUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,9 +22,10 @@ public class InvestRemoteDataSource implements InvestSource {
     }
 
     @Override
-    public void callApplyInvest(Invest invest, InvestApiListener listener) {
+    public void callApplyInvest(String identity, Invest invest, InvestApiListener listener) {
 
-        Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callApplyMoney(invest);
+        LogUtils.logInfo("InvestTest : " + identity + " : " + invest.getInvestPrice());
+        Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callApplyMoney(identity, invest);
 
         result.enqueue(new Callback<Void>() {
             @Override

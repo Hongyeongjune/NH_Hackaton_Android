@@ -8,6 +8,6 @@ public interface InvestContract {
     }
 
     interface Presenter {
-        void callMoneyInvest(String money);
+        void callMoneyInvest(String identity, String money);
     }
 }

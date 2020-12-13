@@ -32,7 +32,7 @@ public class DepositMoneyRemoteDataSource implements DepositMoneySource {
             public void onResponse(Call<DepositMoney> call, Response<DepositMoney> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     DepositMoney virtualAccount = response.body();
-                    listener.onSuccess(virtualAccount.getMessage());
+                    listener.onSuccess(virtualAccount);
                     return;
                 }
                 listener.onFail("예치금 조회를 실패하였습니다.");

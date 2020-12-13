@@ -17,13 +17,13 @@ public class InvestPresenter implements InvestContract.Presenter {
     }
 
     @Override
-    public void callMoneyInvest(String money) {
+    public void callMoneyInvest(String identity, String money) {
         Invest invest = Invest.builder()
-                .money(money)
+                .investPrice(money)
                 .build();
 
-        if(!invest.getMoney().isEmpty()) {
-            investRepository.callApplyInvest(invest, new InvestSource.InvestApiListener() {
+        if(!invest.getInvestPrice().isEmpty()) {
+            investRepository.callApplyInvest(identity, invest, new InvestSource.InvestApiListener() {
                 @Override
                 public void onSuccess() {
                     view.startHomeFragment();
@@ -36,6 +36,6 @@ public class InvestPresenter implements InvestContract.Presenter {
             });
         }
 
-        view.showErrorMessage("내용을 입력하세요");
+        else view.showErrorMessage("내용을 입력하세요");
     }
 }
