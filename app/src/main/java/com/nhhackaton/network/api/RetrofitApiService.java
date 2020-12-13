@@ -7,6 +7,9 @@ import com.nhhackaton.data.InvestHistory.Interest.InterestHistory;
 import com.nhhackaton.data.InvestHistory.InvestDeposit.InvestDeposit;
 import com.nhhackaton.data.InvestHistory.InvestFinish.InvestFinish;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
+import com.nhhackaton.data.LatelyHistory.LatelyInterest.LatelyInterestHistory;
+import com.nhhackaton.data.LatelyHistory.LatelyInvestDeposit.LatelyInvestDeposit;
+import com.nhhackaton.data.LatelyHistory.LatelyInvestFinish.LatelyInvestFinish;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
 import com.nhhackaton.data.LoanHistory.LoanMoney.LoanMoney;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
@@ -92,6 +95,18 @@ public interface RetrofitApiService {
     Call<List<InvestDeposit>> callReadInvestDeposit(@Path("identity") String identity);
     @GET("loan/investor/{identity}")
     Call<List<InterestHistory>> callReadInterest(@Path("identity") String identity);
+
+    /**
+     * 투자 완료 리스트
+     * 투자 신청 리스트
+     * 투자자 아이디를 통해서 투자자가 받은 이자 목록 보기
+     */
+    @GET("deposit/already-invest-list/{identity}")
+    Call<List<LatelyInvestFinish>> callLatelyReadInvestFinish(@Path("identity") String identity);
+    @GET("deposit/apply-invest-list/{identity}")
+    Call<List<LatelyInvestDeposit>> callLatelyReadInvestDeposit(@Path("identity") String identity);
+    @GET("loan/investor/{identity}")
+    Call<List<LatelyInterestHistory>> callLatelyReadInterest(@Path("identity") String identity);
 
     /**
      * 대출 신청

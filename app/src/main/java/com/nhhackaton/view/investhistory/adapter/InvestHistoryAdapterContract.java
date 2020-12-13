@@ -15,6 +15,7 @@ public interface InvestHistoryAdapterContract {
         void addItems(List<InvestHistory> investHistories);
         void setIsLast(boolean isLast);
         void setMoreLoading(boolean isMoreLoading);
+        void sortItems();
     }
 
 }

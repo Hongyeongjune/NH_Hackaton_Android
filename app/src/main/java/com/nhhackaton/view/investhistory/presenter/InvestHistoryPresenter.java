@@ -28,6 +28,7 @@ public class InvestHistoryPresenter implements InvestHistoryContract.Presenter, 
     private final InvestDepositRepository investDepositRepository;
     private final InterestHistoryRepository interestHistoryRepository;
 
+
     private InvestHistoryAdapterContract.View adapterView;
     private InvestHistoryAdapterContract.Model adapterModel;
 
@@ -53,7 +54,9 @@ public class InvestHistoryPresenter implements InvestHistoryContract.Presenter, 
                                     investFinish.get(i).getLoanPrice()));
                 }
 
+
                 adapterModel.addItems(investHistories);
+                adapterModel.sortItems();
                 adapterView.notifyAdapter();
                 adapterModel.setMoreLoading(false);
 
@@ -82,6 +85,7 @@ public class InvestHistoryPresenter implements InvestHistoryContract.Presenter, 
                 }
 
                 adapterModel.addItems(investHistories);
+                adapterModel.sortItems();
                 adapterView.notifyAdapter();
                 adapterModel.setMoreLoading(false);
             }
@@ -109,6 +113,7 @@ public class InvestHistoryPresenter implements InvestHistoryContract.Presenter, 
                 }
 
                 adapterModel.addItems(investHistories);
+                adapterModel.sortItems();
                 adapterView.notifyAdapter();
                 adapterModel.setMoreLoading(false);
             }
@@ -134,4 +139,5 @@ public class InvestHistoryPresenter implements InvestHistoryContract.Presenter, 
     public void onStartItemClick(int position) {
         view.startInvestDetailActivity(0L);
     }
+
 }

@@ -16,6 +16,8 @@ public interface LatelyHistoryAdapterContract {
         void addItems(List<LatelyHistory> latelyHistories);
         void setIsLast(boolean isLast);
         void setMoreLoading(boolean isMoreLoading);
+        void sortItems();
+        void clearItems();
     }
 
 }

@@ -81,6 +81,8 @@ public class InvestHistoryFragment extends Fragment implements OnLoadMoreListene
         presenter.callReadInvestDeposit(SharedPreferencesUtils.readMemberFromEmail(context));
         presenter.callReadInvestFinish(SharedPreferencesUtils.readMemberFromEmail(context));
 
+
+
         investHistoryAdapter.setOnBasicItemClickListener(new OnBasicItemClickListener() {
             @Override
             public void onStartItemClick(int position) {

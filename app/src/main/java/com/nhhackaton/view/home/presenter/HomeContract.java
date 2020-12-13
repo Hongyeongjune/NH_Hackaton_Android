@@ -11,7 +11,11 @@ public interface HomeContract {
     }
 
     interface Presenter {
-        void callReadLatelyHistory();
+
+        void callReadInvestFinish(String identity);
+        void callReadInvestDeposit(String identity);
+        void callReadInterest(String identity);
+
         void setLatelyHistoryAdapterView(LatelyHistoryAdapterContract.View adapterView);
         void setLatelyHistoryAdapterModel(LatelyHistoryAdapterContract.Model adapterModel);
         void callReadDepositMoney(String identity);

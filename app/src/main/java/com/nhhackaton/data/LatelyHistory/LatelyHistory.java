@@ -9,16 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LatelyHistory {
 
-    private Long id;
     private String type;
+    private String date;
     private String money;
-    private String information;
 
-    @Builder
-    public LatelyHistory(Long id, String type, String money, String information) {
-        this.id = id;
+    public LatelyHistory(String type, String date, String money) {
         this.type = type;
+        this.date = date;
         this.money = money;
-        this.information = information;
     }
 }

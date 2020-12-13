@@ -11,6 +11,8 @@ import com.nhhackaton.listener.OnBasicItemClickListener;
 import com.nhhackaton.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -63,7 +65,7 @@ public class LatelyHistoryAdapter extends RecyclerView.Adapter<LatelyHistoryView
 
     @Override
     public LatelyHistory getItem(int position) {
-        return latelyHistories.get(position);
+        return this.latelyHistories.get(position);
     }
 
     @Override
@@ -79,5 +81,20 @@ public class LatelyHistoryAdapter extends RecyclerView.Adapter<LatelyHistoryView
     @Override
     public void setMoreLoading(boolean isMoreLoading) {
         this.isMoreLoading = isMoreLoading;
+    }
+
+    @Override
+    public void sortItems() {
+        Collections.sort(this.latelyHistories, new Comparator<LatelyHistory>() {
+            @Override
+            public int compare(LatelyHistory o1, LatelyHistory o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
+    }
+
+    @Override
+    public void clearItems() {
+        this.latelyHistories.clear();
     }
 }

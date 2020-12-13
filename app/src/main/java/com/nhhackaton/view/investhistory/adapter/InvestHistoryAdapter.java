@@ -12,6 +12,8 @@ import com.nhhackaton.listener.OnLoadMoreListener;
 import com.nhhackaton.util.LogUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -105,5 +107,15 @@ public class InvestHistoryAdapter extends RecyclerView.Adapter<InvestHistoryView
     @Override
     public void setMoreLoading(boolean isMoreLoading) {
         this.isMoreLoading = isMoreLoading;
+    }
+
+    @Override
+    public void sortItems() {
+        Collections.sort(this.investHistories, new Comparator<InvestHistory>() {
+            @Override
+            public int compare(InvestHistory o1, InvestHistory o2) {
+                return o2.getDate().compareTo(o1.getMoney());
+            }
+        });
     }
 }

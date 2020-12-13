@@ -6,15 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.DepositMoney.source.DepositMoneyRepository;
-import com.nhhackaton.data.InvestHistory.InvestHistory;
+import com.nhhackaton.data.LatelyHistory.LatelyInterest.source.LatelyLatelyInterestHistoryRepository;
+import com.nhhackaton.data.LatelyHistory.LatelyInvestDeposit.source.LatelyLatelyInvestDepositRepository;
+import com.nhhackaton.data.LatelyHistory.LatelyInvestFinish.source.LatelyLatelyInvestFinishRepository;
 import com.nhhackaton.data.LatelyHistory.source.LatelyHistoryRepository;
-import com.nhhackaton.listener.OnBasicItemClickListener;
-import com.nhhackaton.listener.OnLoadMoreListener;
 import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.home.adapter.LatelyHistoryAdapter;
@@ -30,8 +29,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.text.DecimalFormat;
 
 public class HomeFragment extends Fragment implements HomeContract.View {
 
@@ -112,11 +109,16 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
         recyclerView.setAdapter(latelyHistoryAdapter);
 
-        presenter = new HomePresenter(this, DepositMoneyRepository.getInstance(),  LatelyHistoryRepository.getInstance());
+        presenter = new HomePresenter(this, DepositMoneyRepository.getInstance(), LatelyLatelyInterestHistoryRepository.getInstance(), LatelyLatelyInvestFinishRepository.getInstance(), LatelyLatelyInvestDepositRepository.getInstance());
         presenter.setLatelyHistoryAdapterModel(latelyHistoryAdapter);
         presenter.setLatelyHistoryAdapterView(latelyHistoryAdapter);
-        presenter.callReadLatelyHistory();
         presenter.callReadDepositMoney(SharedPreferencesUtils.readMemberFromEmail(context));
+
+
+        presenter.callReadInvestFinish(SharedPreferencesUtils.readMemberFromEmail(context));
+        presenter.callReadInvestDeposit(SharedPreferencesUtils.readMemberFromEmail(context));
+
+        presenter.callReadInterest(SharedPreferencesUtils.readMemberFromEmail(context));
 
         latelyHistoryAdapter.setOnBasicItemClickListener(v -> {
             ToastUtils.showToast(context, "구현 중...");
@@ -136,9 +138,9 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     @Override
     public void setVirtualAccount(String message) {
-        DecimalFormat formatter = new DecimalFormat("###,###");
-        formatter.format(message);
+//        DecimalFormat formatter = new DecimalFormat("#,###");
+//        formatter.format(message);
 
-        tvDepositMoney.setText(formatter.format(message));
+        tvDepositMoney.setText(message);
     }
 }
