@@ -5,7 +5,7 @@ import com.nhhackaton.data.loan.LoanApply;
 public interface LoanSource {
 
     interface LoanApiListener {
-        void onSuccess(LoanApply loanApply);
+        void onSuccess();
         void onFail(String message);
     }
 

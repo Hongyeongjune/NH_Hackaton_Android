@@ -2,6 +2,7 @@ package com.nhhackaton.data.loan.source;
 
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.network.api.RetrofitApiClient;
+import com.nhhackaton.util.LogUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,23 +22,26 @@ public class LoanRemoteDataSource implements LoanSource {
 
     @Override
     public void callLoanApply(LoanApply loanApply, LoanApiListener listener) {
-        Call<LoanApply> result = RetrofitApiClient.getInstance().getRetrofitApiService().callLoanApply(loanApply);
 
-        result.enqueue(new Callback<LoanApply>() {
+        LogUtils.logInfo(loanApply.toString());
+
+        Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callLoanApply(loanApply);
+
+        result.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<LoanApply> call, Response<LoanApply> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    LoanApply loan = response.body();
-                    listener.onSuccess(loan);
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    listener.onSuccess();
                     return;
                 }
                 listener.onFail("대출 신청 실패");
             }
 
             @Override
-            public void onFailure(Call<LoanApply> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 listener.onFail("통신에 실패하였습니다.");
             }
         });
+
     }
 }

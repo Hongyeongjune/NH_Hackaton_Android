@@ -4,18 +4,21 @@ import com.nhhackaton.data.Account.Account;
 import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.Invest.Invest;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
-import com.nhhackaton.data.LatelyHistory.LatelyHistory;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.SignInResponse;
 import com.nhhackaton.data.SignUp.SignUp;
+import com.nhhackaton.data.document.MemberResponse;
 import com.nhhackaton.data.loan.LoanApply;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface RetrofitApiService {
@@ -65,12 +68,19 @@ public interface RetrofitApiService {
     /**
      * 대출 신청
      */
-    @POST("/")
-    Call<LoanApply> callLoanApply(@Body LoanApply loanApply);
+    @POST("loan")
+    Call<Void> callLoanApply(@Body LoanApply loanApply);
 
     /**
      * 계좌 등록
      */
     @POST("member/set-account/{identity}")
     Call<Void> callSetAccount(@Path("identity")String identity, @Body Account account);
+
+    /**
+     * 파일 업로드 URI 전송
+     */
+    @Multipart
+    @POST("member/document/{identity}")
+    Call<MemberResponse> callGetUri(@Path("identity") String identity, @Part MultipartBody.Part multipartFile);
 }

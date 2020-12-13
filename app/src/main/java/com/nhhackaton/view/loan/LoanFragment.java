@@ -21,15 +21,18 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 import com.nhhackaton.R;
+import com.nhhackaton.data.document.source.DocumentRepository;
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.data.loan.source.LoanRepository;
 import com.nhhackaton.util.LogUtils;
 import com.nhhackaton.util.SharedPreferencesUtils;
-import com.nhhackaton.view.invest.InvestFragment;
+import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.loan.presenter.LoanContract;
 import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
@@ -173,16 +176,13 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
 
         //data set
 //        loanApply.setStudentIdentity(SharedPreferencesUtils.readMemberFromEmail(context));
-        loanApply.setStudentIdentity("admin");
-        loanApply.setTerm("12");
-        loanApply.setLoanAmount(edtAmount.getText().toString());
 
-        presenter = new LoanPresenter(this, LoanRepository.getInstance());
+        presenter = new LoanPresenter(this, LoanRepository.getInstance(), DocumentRepository.getInstance());
 
         //bottom layout
         btnLoanApply = (Button) view.findViewById(R.id.btn_loan_apply);
         btnLoanApply.setOnClickListener(v -> presenter.callLoanApply(
-                loanApply
+                loanApply.getTerm(), edtAmount.getText().toString(), SharedPreferencesUtils.readMemberFromEmail(context)
         ));
 
     }
@@ -228,6 +228,9 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
                 intent.setDataAndType(mImageCaptureUri, "image/*");
 
                 File file = new File(getRealPathFromURI(mImageCaptureUri));
+
+                presenter.callGetUri(SharedPreferencesUtils.readMemberFromEmail(context),
+                        file);
 
                 if("1".equals(selectedBtnNm)){
                     txtFile1.setText(file.getName());
@@ -319,10 +322,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
                 edtInput.setVisibility(View.VISIBLE);
             } else if(checkedId == R.id.rd_btn_select){
                 edtInput.setVisibility(View.GONE);
-
-
-
-                txtSelect.setText("사용자 계좌 정보 자동입력"); //TODO: 사용자 계좌 정보 자동입력
+                txtSelect.setText("사용자 계좌 정보를 가져오는데 성공했습니다.");
                 txtSelect.setVisibility(View.VISIBLE);
             }
         }
@@ -387,6 +387,6 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
 
     @Override
     public void showErrorMessage(String message) {
-
+        ToastUtils.showToast(context, message);
     }
 }
