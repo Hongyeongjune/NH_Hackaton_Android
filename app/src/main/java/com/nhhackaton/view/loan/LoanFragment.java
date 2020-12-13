@@ -27,6 +27,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 import com.nhhackaton.R;
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.source.DocumentRepository;
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.data.loan.source.LoanRepository;
@@ -38,11 +39,15 @@ import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
 
 public class LoanFragment extends Fragment implements View.OnClickListener, LoanContract.View {
+
+    private List<DocumentRequests> documentRequestsList = new ArrayList<>();
 
     private Context context;
 
@@ -383,6 +388,17 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     public void startMainActivity() {
         Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void setDocumentRequests(String uri) {
+        DocumentRequests documentRequests = DocumentRequests.builder()
+                .identity(SharedPreferencesUtils.readMemberFromEmail(context))
+                .type(selectedBtnNm + "")
+                .url(uri)
+                .build();
+
+        documentRequestsList.add(documentRequests);
     }
 
     @Override

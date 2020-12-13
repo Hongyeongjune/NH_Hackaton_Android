@@ -1,10 +1,12 @@
 package com.nhhackaton.view.loan.presenter;
 
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.source.DocumentRepository;
 import com.nhhackaton.data.document.source.DocumentSource;
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.data.loan.source.LoanRepository;
 import com.nhhackaton.data.loan.source.LoanSource;
+import com.nhhackaton.util.SharedPreferencesUtils;
 
 import java.io.File;
 
@@ -52,7 +54,7 @@ public class LoanPresenter implements LoanContract.Presenter{
         documentRepository.callGetUri(identity, file, new DocumentSource.DocumentApiListener() {
             @Override
             public void onSuccess(String uri) {
-
+                view.setDocumentRequests(uri);
             }
 
             @Override

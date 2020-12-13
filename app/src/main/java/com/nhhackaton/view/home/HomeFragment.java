@@ -116,6 +116,10 @@ public class HomeFragment extends Fragment implements HomeContract.View {
         presenter.callReadLatelyHistory();
         presenter.callReadDepositMoney(SharedPreferencesUtils.readMemberFromEmail(context));
 
+        latelyHistoryAdapter.setOnBasicItemClickListener(v -> {
+            ToastUtils.showToast(context, "구현 중...");
+        });
+
     }
 
     @Override
