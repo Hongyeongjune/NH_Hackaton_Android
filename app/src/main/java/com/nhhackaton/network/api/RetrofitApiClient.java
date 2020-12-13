@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitApiClient {
-    private final String URL = "http://127.0.0.1:8080/";
+    private final String URL = "http://192.168.0.4:8080/";
     private static final RetrofitApiClient INSTANCE = new RetrofitApiClient();
 
     private RetrofitApiService retrofitApiService;

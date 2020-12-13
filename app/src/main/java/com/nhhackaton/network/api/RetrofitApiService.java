@@ -1,5 +1,6 @@
 package com.nhhackaton.network.api;
 
+import com.nhhackaton.data.Account.Account;
 import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.Invest.Invest;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
@@ -12,7 +13,9 @@ import com.nhhackaton.data.loan.LoanApply;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface RetrofitApiService {
 
@@ -25,8 +28,14 @@ public interface RetrofitApiService {
     /**
      * 회원가입
      */
-    @POST("/")
-    Call<SignUp> callSignUp(@Body SignUp signUp);
+    @POST("member/signup")
+    Call<Void> callSignUp(@Body SignUp signUp);
+
+    /**
+     * 중복 확인
+     */
+    @GET("member/duplication/{identity}")
+    Call<Boolean> callDuplicate(@Path("identity") String identity);
 
     /**
      * 예치금 조회
@@ -57,4 +66,10 @@ public interface RetrofitApiService {
      */
     @POST("/")
     Call<LoanApply> callLoanApply(@Body LoanApply loanApply);
+
+    /**
+     * 계좌 등록
+     */
+    @POST("member/set-account/{identity}")
+    Call<Void> callSetAccount(@Path("identity")String identity, @Body Account account);
 }

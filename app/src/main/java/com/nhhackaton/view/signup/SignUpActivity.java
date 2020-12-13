@@ -5,19 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.nhhackaton.R;
-import com.nhhackaton.data.SignIn.source.SignInRepository;
+import com.nhhackaton.data.SignUp.duplicate.source.DuplicateRepository;
 import com.nhhackaton.data.SignUp.source.SignUpRepository;
 import com.nhhackaton.util.ToastUtils;
-import com.nhhackaton.view.signin.SignInActivity;
-import com.nhhackaton.view.signin.presenter.SignInContract;
-import com.nhhackaton.view.signin.presenter.SignInPresenter;
+import com.nhhackaton.view.account.AccountActivity;
 import com.nhhackaton.view.signup.presenter.SignUpContract;
 import com.nhhackaton.view.signup.presenter.SignUpPresenter;
 
@@ -26,7 +22,7 @@ public class SignUpActivity  extends AppCompatActivity implements SignUpContract
     private Context context;
     private EditText etSignUpName, etIdentity, etPassword, etSignUpBirth;
     private Button btnSignUp;
-    private CheckBox ckEmailValidate;
+    private Button btnDuplicate;
     private TextView txtEmailValidate;
     private SignUpContract.Presenter presenter;
 
@@ -48,37 +44,21 @@ public class SignUpActivity  extends AppCompatActivity implements SignUpContract
         etIdentity = (EditText) findViewById(R.id.et_sign_up_identity);
         etPassword = (EditText) findViewById(R.id.et_sign_up_password);
         etSignUpBirth = (EditText) findViewById(R.id.et_sign_up_birth);
-
+        btnDuplicate = (Button) findViewById(R.id.btn_duplicate);
         btnSignUp = (Button) findViewById(R.id.btn_sign_up);
-        ckEmailValidate = (CheckBox) findViewById(R.id.ck_email_validate);
+
         txtEmailValidate = (TextView) findViewById(R.id.txt_email_validate);
 
-        presenter = new SignUpPresenter(this, SignUpRepository.getInstance());
+        presenter = new SignUpPresenter(this, SignUpRepository.getInstance(), DuplicateRepository.getInstance());
 
-        if(ckEmailValidate.isChecked()){
-            //TODO: validate service 호출
+        btnDuplicate.setOnClickListener(v -> presenter.callDuplication(etIdentity.getText().toString()));
 
-            /*
-            if(true){
-                txtEmailValidate.setVisibility(View.INVISIBLE);
-                isValidateIdentity = true;
-            } else {
-                txtEmailValidate.setVisibility(View.VISIBLE);
-                isValidateIdentity = false;
-            }
-             */
-        }
-
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isValidateIdentity){
-                    startSignInActivity();
-                } else {
-                    showErrorMessage("이메일 중복체크여부를 확인해주세요.");
-                }
-            }
-        });
+        btnSignUp.setOnClickListener(v -> presenter.callSignUp(
+                etIdentity.getText().toString(),
+                etPassword.getText().toString(),
+                etSignUpBirth.getText().toString(),
+                etSignUpName.getText().toString()
+        ));
 
     }
 
@@ -88,8 +68,13 @@ public class SignUpActivity  extends AppCompatActivity implements SignUpContract
     }
 
     @Override
-    public void startSignInActivity() {
-        Intent intent = new Intent(context, SignInActivity.class);
+    public void showDuplicateMessage(String message) {
+        ToastUtils.showToast(context, message);
+    }
+
+    @Override
+    public void startAccountActivity() {
+        Intent intent = new Intent(context, AccountActivity.class);
         startActivity(intent);
     }
 }
