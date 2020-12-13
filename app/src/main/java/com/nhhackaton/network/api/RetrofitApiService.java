@@ -9,8 +9,11 @@ import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.SignInResponse;
 import com.nhhackaton.data.SignUp.SignUp;
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.MemberResponse;
 import com.nhhackaton.data.loan.LoanApply;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -70,6 +73,8 @@ public interface RetrofitApiService {
      */
     @POST("loan")
     Call<Void> callLoanApply(@Body LoanApply loanApply);
+    @POST("member")
+    Call<Void> callSetDocument(@Body List<DocumentRequests> documentRequests);
 
     /**
      * 계좌 등록

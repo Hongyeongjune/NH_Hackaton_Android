@@ -1,5 +1,6 @@
 package com.nhhackaton.view.loan.presenter;
 
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.source.DocumentRepository;
 import com.nhhackaton.data.document.source.DocumentSource;
 import com.nhhackaton.data.loan.LoanApply;
@@ -7,6 +8,7 @@ import com.nhhackaton.data.loan.source.LoanRepository;
 import com.nhhackaton.data.loan.source.LoanSource;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MultipartBody;
 
@@ -53,14 +55,42 @@ public class LoanPresenter implements LoanContract.Presenter{
             @Override
             public void onSuccess(String uri) {
 
+                view.setDocumentRequests(uri);
             }
 
             @Override
             public void onFail(String message) {
                 view.showErrorMessage(message);
             }
+
+            @Override
+            public void onSuccessDocument() {
+
+            }
+
         });
 
 
+    }
+
+    @Override
+    public void callSetDocument(List<DocumentRequests> documentRequests) {
+        documentRepository.callSetDocument(documentRequests, new DocumentSource.DocumentApiListener() {
+
+            @Override
+            public void onSuccess(String uri) {
+
+            }
+
+            @Override
+            public void onFail(String message) {
+                view.showErrorMessage(message);
+            }
+
+            @Override
+            public void onSuccessDocument() {
+                view.startMainActivity();
+            }
+        });
     }
 }

@@ -21,17 +21,20 @@
         <activity
             android:name=".view.main.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".view.loan.LoanFragment"></activity>
-        <activity android:name=".view.signin.SignInActivity" />
-        <activity android:name=".view.signup.SignUpActivity" />
-        <activity android:name=".view.intro.IntroActivity">
+            android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.loan.LoanFragment"></activity>
+        <activity android:name=".view.signin.SignInActivity" />
+        <activity android:name=".view.signup.SignUpActivity" />
+        <activity android:name=".view.intro.IntroActivity">
+
         </activity>
 
         <service

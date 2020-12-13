@@ -27,6 +27,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 import com.nhhackaton.R;
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.source.DocumentRepository;
 import com.nhhackaton.data.loan.LoanApply;
 import com.nhhackaton.data.loan.source.LoanRepository;
@@ -38,12 +39,16 @@ import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
 
 public class LoanFragment extends Fragment implements View.OnClickListener, LoanContract.View {
 
+    private List<DocumentRequests> documentRequestsList = new ArrayList<>();
     private Context context;
 
     private LinearLayout layoutType3, layoutType4, layoutType5, layoutType6, layoutType7, layoutType8;
@@ -68,7 +73,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     private LoanContract.Presenter presenter;
     private LoanApply loanApply = new LoanApply();    //TODO: send dto to server
 
-    private StringBuilder sbFileUrl = new StringBuilder();
+    private String typeNm;
 
 
     public static LoanFragment createFragment() {
@@ -181,9 +186,11 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
 
         //bottom layout
         btnLoanApply = (Button) view.findViewById(R.id.btn_loan_apply);
-        btnLoanApply.setOnClickListener(v -> presenter.callLoanApply(
-                loanApply.getTerm(), edtAmount.getText().toString(), SharedPreferencesUtils.readMemberFromEmail(context)
-        ));
+        btnLoanApply.setOnClickListener(v -> {
+            presenter.callLoanApply(loanApply.getTerm(), edtAmount.getText().toString(), SharedPreferencesUtils.readMemberFromEmail(context));
+            presenter.callSetDocument(documentRequestsList);
+
+        });
 
     }
 
@@ -275,22 +282,31 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
         };
 
         if(v.getId() == R.id.btn_gallery1) {
+            typeNm = "주민등록등본";
             selectedBtnNm = "1";
         } else if(v.getId() == R.id.btn_gallery2) {
+            typeNm = "본인 소득 금액 증명원";
             selectedBtnNm = "2";
         } else if(v.getId() == R.id.btn_gallery3) {
+            typeNm = "배우자 소득 금액 증명원";
             selectedBtnNm = "3";
         } else if(v.getId() == R.id.btn_gallery4) {
+            typeNm = "건강보험 자격득실 확인서";
             selectedBtnNm = "4";
         } else if(v.getId() == R.id.btn_gallery5) {
+            typeNm = "연봉계약서";
             selectedBtnNm = "5";
         } else if(v.getId() == R.id.btn_gallery6) {
+            typeNm = "사업자등록증";
             selectedBtnNm = "6";
         } else if(v.getId() == R.id.btn_gallery7) {
+            typeNm = "가족관계 증명서";
             selectedBtnNm = "7";
         } else if(v.getId() == R.id.btn_gallery8) {
+            typeNm = "부모 소득 금액 증명원";
             selectedBtnNm = "8";
         } else if(v.getId() == R.id.btn_gallery9) {
+            typeNm = "임대차계약서";
             selectedBtnNm = "9";
         }
 
@@ -383,6 +399,17 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     public void startMainActivity() {
         Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void setDocumentRequests(String url) {
+
+        DocumentRequests d = new DocumentRequests();
+        d.setIdentity(SharedPreferencesUtils.readMemberFromEmail(context));
+        d.setType(typeNm);
+        d.setUrl(url);
+
+        documentRequestsList.add(d);
     }
 
     @Override
