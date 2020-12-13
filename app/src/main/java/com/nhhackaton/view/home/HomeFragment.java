@@ -138,9 +138,22 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     @Override
     public void setVirtualAccount(String message) {
-//        DecimalFormat formatter = new DecimalFormat("#,###");
-//        formatter.format(message);
 
-        tvDepositMoney.setText(message);
+        String result = "";
+        int count = 0;
+        for(int i=message.length()-1; i>=0; i--) {
+
+            if(count%3 == 0 && count!=0) {
+                result += ",";
+            }
+
+            result += message.charAt(i);
+            count++;
+        }
+
+        StringBuilder stringBuilder = new StringBuilder(result);
+
+
+        tvDepositMoney.setText(stringBuilder.reverse().toString());
     }
 }
