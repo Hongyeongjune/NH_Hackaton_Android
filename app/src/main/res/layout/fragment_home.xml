@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_home_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,40 +16,68 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.4"
-            android:paddingTop="20sp"
-            android:paddingBottom="20sp"
+            android:orientation="vertical"
             android:paddingLeft="20sp"
+            android:paddingTop="20sp"
             android:paddingRight="20sp"
-            android:weightSum="1"
-            android:orientation="vertical">
+            android:paddingBottom="20sp"
+            android:weightSum="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#AAAAAA"
+
+                android:background="@drawable/home_main_layout"
                 android:orientation="vertical"
                 android:paddingLeft="20sp"
                 android:paddingRight="20sp"
                 android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/tv_home_deposit_title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:text="예치금"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:gravity="center_vertical" />
+                    >
 
-                <TextView
-                    android:id="@+id/tv_home_deposit_money"
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="220dp"
+                        android:layout_marginTop="35dp"
+                        android:background="@drawable/home_main_money"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:text="0원"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:gravity="center_vertical" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_home_deposit_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center_vertical"
+                        android:text="0"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="35dp" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/home_main_won"
+                        android:gravity="center_vertical"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="35dp" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -58,6 +87,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="2dp"
             android:layout_weight="0.1"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -72,8 +102,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:text="투자 신청"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                android:background="@drawable/home_btn_invest_apply"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="0dp"
@@ -85,9 +116,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:text="투자 현황"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
+                android:background="@drawable/home_btn_invest_history"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,8 +137,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:text="대출 신청"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                android:background="@drawable/home_btn_loan_apply"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="0dp"
@@ -120,8 +150,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:text="대출 현황"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                android:background="@drawable/home_btn_loan_history"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
 
