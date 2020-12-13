@@ -5,7 +5,7 @@ import com.nhhackaton.data.SignUp.SignUp;
 public interface SignUpSource {
 
     interface SignUpApiListener {
-        void onSuccess(SignUp signUp);
+        void onSuccess();
         void onFail(String message);
     }
 

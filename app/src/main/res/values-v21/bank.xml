@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bank">
+        <item>은행 선택</item>
+        <item>농협</item>
+        <item>수협</item>
+        <item>축협</item>
+        <item>신협</item>
+    </string-array>
+</resources>

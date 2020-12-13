@@ -10,10 +10,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.nhhackaton.R;
+import com.nhhackaton.data.Account.Account;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.source.SignInRepository;
 import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
+import com.nhhackaton.view.account.AccountActivity;
 import com.nhhackaton.view.main.MainActivity;
 import com.nhhackaton.view.signin.presenter.SignInContract;
 import com.nhhackaton.view.signin.presenter.SignInPresenter;

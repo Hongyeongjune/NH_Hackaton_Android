@@ -23,22 +23,21 @@ public class SignUpRemoteDataSource implements SignUpSource {
 
     @Override
     public void callSignUp(SignUp signUp, SignUpApiListener listener) {
-        Call<SignUp> result = RetrofitApiClient.getInstance().getRetrofitApiService().callSignUp(signUp);
+        Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callSignUp(signUp);
 
-        result.enqueue(new Callback<SignUp>() {
+        result.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<SignUp> call, Response<SignUp> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    SignUp signUp = response.body();
-                    listener.onSuccess(signUp);
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    listener.onSuccess();
                     return;
                 }
-                listener.onFail("대출 신청 실패");
+                listener.onFail("회원가입 실패");
             }
 
             @Override
-            public void onFailure(Call<SignUp> call, Throwable t) {
-                listener.onFail("통신에 실패하였습니다.");
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onFail("통신 실패");
             }
         });
 
