@@ -31,6 +31,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
+
 public class HomeFragment extends Fragment implements HomeContract.View {
 
     private Context context;
@@ -134,6 +136,9 @@ public class HomeFragment extends Fragment implements HomeContract.View {
 
     @Override
     public void setVirtualAccount(String message) {
-        tvDepositMoney.setText(message + "원");
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        formatter.format(message);
+
+        tvDepositMoney.setText(formatter.format(message));
     }
 }

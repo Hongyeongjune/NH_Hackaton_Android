@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
-            android:background="#AAAAAA"
+            android:background="#FFFFFF"
             app:contentInsetStart="0dp">
 
             <LinearLayout
@@ -29,27 +29,38 @@
                 android:orientation="horizontal"
                 android:weightSum="1">
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.025" />
+
                 <ImageView
                     android:id="@+id/iv_main_side_menu"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.1"
                     android:src="@drawable/img_side_menu" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.225" />
 
                 <TextView
                     android:id="@+id/tv_main_title"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:layout_height="38dp"
+                    android:layout_weight="0.3"
                     android:gravity="center"
-                    android:text="NH Hackaton"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/toolbar_title"
                     android:textSize="20dp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2" />
+                    android:layout_weight="0.3" />
 
             </LinearLayout>
 

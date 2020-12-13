@@ -9,6 +9,7 @@ import com.nhhackaton.data.loan.source.LoanSource;
 import com.nhhackaton.util.SharedPreferencesUtils;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MultipartBody;
 
@@ -54,6 +55,7 @@ public class LoanPresenter implements LoanContract.Presenter{
         documentRepository.callGetUri(identity, file, new DocumentSource.DocumentApiListener() {
             @Override
             public void onSuccess(String uri) {
+
                 view.setDocumentRequests(uri);
             }
 
@@ -61,8 +63,35 @@ public class LoanPresenter implements LoanContract.Presenter{
             public void onFail(String message) {
                 view.showErrorMessage(message);
             }
+
+            @Override
+            public void onSuccessDocument() {
+
+            }
+
         });
 
 
+    }
+
+    @Override
+    public void callSetDocument(List<DocumentRequests> documentRequests) {
+        documentRepository.callSetDocument(documentRequests, new DocumentSource.DocumentApiListener() {
+
+            @Override
+            public void onSuccess(String uri) {
+
+            }
+
+            @Override
+            public void onFail(String message) {
+                view.showErrorMessage(message);
+            }
+
+            @Override
+            public void onSuccessDocument() {
+                view.startMainActivity();
+            }
+        });
     }
 }

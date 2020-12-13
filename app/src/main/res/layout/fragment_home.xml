@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_home_color"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -95,28 +95,27 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.08" />
 
             <Button
                 android:id="@+id/btn_home_invest"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-
-                android:background="@drawable/home_btn_invest_apply"
+                android:background="@drawable/home_btn_invest_apply2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.13" />
 
             <Button
                 android:id="@+id/btn_home_invest_history"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:background="@drawable/home_btn_invest_history"
+                android:background="@drawable/home_btn_invest_history2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </LinearLayout>
 
@@ -125,32 +124,34 @@
             android:layout_height="0dp"
             android:layout_weight="0.1"
             android:orientation="horizontal"
+            android:layout_marginTop="3dp"
             android:weightSum="1">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.08" />
 
             <Button
                 android:id="@+id/btn_home_loan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.35"
-                android:background="@drawable/home_btn_loan_apply"
+                android:background="@drawable/home_btn_loan_apply2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1" />
+                android:layout_weight="0.13" />
 
             <Button
                 android:id="@+id/btn_home_loan_history"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="65dp"
                 android:layout_weight="0.35"
-                android:background="@drawable/home_btn_loan_history"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/home_btn_loan_history2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
@@ -158,12 +159,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:layout_weight="0.4"
+            android:orientation="vertical"
+            android:weightSum="1"
+            >
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/home_recent_font2"
+
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_home_lately_history"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"/>
 
 
         </LinearLayout>

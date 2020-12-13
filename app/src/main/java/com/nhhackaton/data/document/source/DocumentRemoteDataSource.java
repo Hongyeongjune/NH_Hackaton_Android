@@ -1,10 +1,12 @@
 package com.nhhackaton.data.document.source;
 
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.MemberResponse;
 import com.nhhackaton.network.api.RetrofitApiClient;
 import com.nhhackaton.util.LogUtils;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -47,8 +49,30 @@ public class DocumentRemoteDataSource implements DocumentSource {
 
             @Override
             public void onFailure(Call<MemberResponse> call, Throwable t) {
-                listener.onFail("통신 실패");
+                listener.onFail("통신실패");
             }
         });
+    }
+
+    @Override
+    public void callSetDocument(List<DocumentRequests> documentRequests, DocumentApiListener listener) {
+        Call<Void> result = RetrofitApiClient.getInstance().getRetrofitApiService().callSetDocument(documentRequests);
+
+        result.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    listener.onSuccessDocument();
+                    return;
+                }
+                listener.onFail("파일 전송 실패");
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onFail("통신실패");
+            }
+        });
+
     }
 }

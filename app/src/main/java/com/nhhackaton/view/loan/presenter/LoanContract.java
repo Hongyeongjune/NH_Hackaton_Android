@@ -4,6 +4,7 @@ import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.loan.LoanApply;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.MultipartBody;
 
@@ -19,5 +20,6 @@ public interface LoanContract {
     interface Presenter {
         void callLoanApply(String term, String amount, String identity);
         void callGetUri(String identity, File file);
+        void callSetDocument(List<DocumentRequests> documentRequests);
     }
 }

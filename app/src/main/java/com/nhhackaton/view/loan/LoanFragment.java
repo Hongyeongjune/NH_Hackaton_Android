@@ -39,6 +39,7 @@ import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
 
 import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     private LoanContract.Presenter presenter;
     private LoanApply loanApply = new LoanApply();    //TODO: send dto to server
 
-    private StringBuilder sbFileUrl = new StringBuilder();
+    private String typeNm;
 
 
     public static LoanFragment createFragment() {
@@ -186,9 +187,11 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
 
         //bottom layout
         btnLoanApply = (Button) view.findViewById(R.id.btn_loan_apply);
-        btnLoanApply.setOnClickListener(v -> presenter.callLoanApply(
-                loanApply.getTerm(), edtAmount.getText().toString(), SharedPreferencesUtils.readMemberFromEmail(context)
-        ));
+        btnLoanApply.setOnClickListener(v -> {
+            presenter.callLoanApply(loanApply.getTerm(), edtAmount.getText().toString(), SharedPreferencesUtils.readMemberFromEmail(context));
+            presenter.callSetDocument(documentRequestsList);
+
+        });
 
     }
 
@@ -280,22 +283,31 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
         };
 
         if(v.getId() == R.id.btn_gallery1) {
+            typeNm = "주민등록등본";
             selectedBtnNm = "1";
         } else if(v.getId() == R.id.btn_gallery2) {
+            typeNm = "본인 소득 금액 증명원";
             selectedBtnNm = "2";
         } else if(v.getId() == R.id.btn_gallery3) {
+            typeNm = "배우자 소득 금액 증명원";
             selectedBtnNm = "3";
         } else if(v.getId() == R.id.btn_gallery4) {
+            typeNm = "건강보험 자격득실 확인서";
             selectedBtnNm = "4";
         } else if(v.getId() == R.id.btn_gallery5) {
+            typeNm = "연봉계약서";
             selectedBtnNm = "5";
         } else if(v.getId() == R.id.btn_gallery6) {
+            typeNm = "사업자등록증";
             selectedBtnNm = "6";
         } else if(v.getId() == R.id.btn_gallery7) {
+            typeNm = "가족관계 증명서";
             selectedBtnNm = "7";
         } else if(v.getId() == R.id.btn_gallery8) {
+            typeNm = "부모 소득 금액 증명원";
             selectedBtnNm = "8";
         } else if(v.getId() == R.id.btn_gallery9) {
+            typeNm = "임대차계약서";
             selectedBtnNm = "9";
         }
 
@@ -399,6 +411,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
                 .build();
 
         documentRequestsList.add(documentRequests);
+
     }
 
     @Override

@@ -14,6 +14,7 @@ import com.nhhackaton.data.LoanHistory.repayment.Repayment;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.SignInResponse;
 import com.nhhackaton.data.SignUp.SignUp;
+import com.nhhackaton.data.document.DocumentRequests;
 import com.nhhackaton.data.document.MemberResponse;
 import com.nhhackaton.data.loan.LoanApply;
 
@@ -97,6 +98,8 @@ public interface RetrofitApiService {
      */
     @POST("loan")
     Call<Void> callLoanApply(@Body LoanApply loanApply);
+    @POST("member")
+    Call<Void> callSetDocument(@Body List<DocumentRequests> documentRequests);
 
     /**
      * 계좌 등록
