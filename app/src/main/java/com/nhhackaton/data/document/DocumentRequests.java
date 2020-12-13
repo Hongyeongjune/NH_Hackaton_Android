@@ -1,32 +1,21 @@
 package com.nhhackaton.data.document;
 
+import java.util.List;
+
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
 public class DocumentRequests {
 
-    String identity;
-    String type;
-    String url;
+    private String identity;
+    private String type;
+    private String url;
 
-    public String getIdentity() {
-        return identity;
-    }
-
-    public void setIdentity(String identity) {
+    @Builder
+    public DocumentRequests(String identity, String type, String url) {
         this.identity = identity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
         this.type = type;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
         this.url = url;
     }
 }

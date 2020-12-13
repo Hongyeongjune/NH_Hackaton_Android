@@ -15,9 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nhhackaton.R;
+import com.nhhackaton.data.InvestHistory.Interest.InterestHistory;
+import com.nhhackaton.data.InvestHistory.Interest.source.InterestHistoryRepository;
+import com.nhhackaton.data.InvestHistory.InvestDeposit.source.InvestDepositRepository;
+import com.nhhackaton.data.InvestHistory.InvestFinish.source.InvestFinishRepository;
 import com.nhhackaton.data.InvestHistory.InvestHistory;
 import com.nhhackaton.data.InvestHistory.source.InvestHistoryRepository;
+import com.nhhackaton.listener.OnBasicItemClickListener;
 import com.nhhackaton.listener.OnLoadMoreListener;
+import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.investhistory.adapter.InvestHistoryAdapter;
 import com.nhhackaton.view.investhistory.presenter.InvestHistoryContract;
@@ -64,18 +70,31 @@ public class InvestHistoryFragment extends Fragment implements OnLoadMoreListene
         recyclerView.setLayoutManager(linearLayoutManager);
         investHistoryAdapter.setLinearLayoutManager(linearLayoutManager);
 
-        presenter = new InvestHistoryPresenter(this, InvestHistoryRepository.getInstance());
+        presenter = new InvestHistoryPresenter(this,
+                InvestFinishRepository.getInstance(),
+                InvestDepositRepository.getInstance(),
+                InterestHistoryRepository.getInstance());
+
         presenter.setInvestHistoryAdapterModel(investHistoryAdapter);
         presenter.setInvestHistoryAdapterView(investHistoryAdapter);
-        presenter.callReadInvestHistory(1);
+        presenter.callReadInterest(SharedPreferencesUtils.readMemberFromEmail(context));
+        presenter.callReadInvestDeposit(SharedPreferencesUtils.readMemberFromEmail(context));
+        presenter.callReadInvestFinish(SharedPreferencesUtils.readMemberFromEmail(context));
+
+        investHistoryAdapter.setOnBasicItemClickListener(new OnBasicItemClickListener() {
+            @Override
+            public void onStartItemClick(int position) {
+                ToastUtils.showToast(context, "구현 중....");
+            }
+        });
 
     }
 
     @Override
     public void onLoadMore() {
-        new Handler().postDelayed(() -> {
-            presenter.callReadInvestHistory(calculatePageNo());
-        }, 500);
+//        new Handler().postDelayed(() -> {
+//            presenter.callReadInvestHistory(calculatePageNo());
+//        }, 500);
     }
 
     private int calculatePageNo() {

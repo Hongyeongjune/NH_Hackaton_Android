@@ -3,9 +3,14 @@ package com.nhhackaton.network.api;
 import com.nhhackaton.data.Account.Account;
 import com.nhhackaton.data.DepositMoney.DepositMoney;
 import com.nhhackaton.data.Invest.Invest;
+import com.nhhackaton.data.InvestHistory.Interest.InterestHistory;
+import com.nhhackaton.data.InvestHistory.InvestDeposit.InvestDeposit;
+import com.nhhackaton.data.InvestHistory.InvestFinish.InvestFinish;
 import com.nhhackaton.data.InvestHistory.InvestPagingResponse;
 import com.nhhackaton.data.LatelyHistory.LatelyPagingResponse;
+import com.nhhackaton.data.LoanHistory.LoanMoney.LoanMoney;
 import com.nhhackaton.data.LoanHistory.LoanPagingResponse;
+import com.nhhackaton.data.LoanHistory.repayment.Repayment;
 import com.nhhackaton.data.SignIn.SignIn;
 import com.nhhackaton.data.SignIn.SignInResponse;
 import com.nhhackaton.data.SignUp.SignUp;
@@ -57,8 +62,7 @@ public interface RetrofitApiService {
     Call<Void> callApplyMoney(@Path("identity") String identity, @Body Invest invest);
 
     /**
-     * 투자 현황 조회
-     * 대출 현황 조회
+     * 대출 현황
      * 최근 거래 내역 조회
      */
     @POST("/")
@@ -67,6 +71,27 @@ public interface RetrofitApiService {
     Call<LoanPagingResponse> callReadLoanHistory(@Body int pageNo);
     @POST("/")
     Call<LatelyPagingResponse> callReadLatelyHistory();
+
+    /**
+     * 이자 상환 리스트
+     * 대출 금 조회
+     */
+    @GET("loan/borrower/{identity}")
+    Call<List<Repayment>> callReadInterestBorrow(@Path("identity") String identity);
+    @GET("loan/{identity}")
+    Call<List<LoanMoney>> callReadLoanMoney(@Path("identity") String identity);
+
+    /**
+     * 투자 완료 리스트
+     * 투자 신청 리스트
+     * 투자자 아이디를 통해서 투자자가 받은 이자 목록 보기
+     */
+    @GET("deposit/already-invest-list/{identity}")
+    Call<List<InvestFinish>> callReadInvestFinish(@Path("identity") String identity);
+    @GET("deposit/apply-invest-list/{identity}")
+    Call<List<InvestDeposit>> callReadInvestDeposit(@Path("identity") String identity);
+    @GET("loan/investor/{identity}")
+    Call<List<InterestHistory>> callReadInterest(@Path("identity") String identity);
 
     /**
      * 대출 신청

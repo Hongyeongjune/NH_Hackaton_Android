@@ -40,6 +40,7 @@ public class DocumentRemoteDataSource implements DocumentSource {
             public void onResponse(Call<MemberResponse> call, Response<MemberResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String uri = response.body().getUrl();
+                    LogUtils.logInfo("URI : " + uri);
                     listener.onSuccess(uri);
                     return;
                 }

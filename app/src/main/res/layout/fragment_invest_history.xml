@@ -15,16 +15,6 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/tv_invest_history_no"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.1"
-            android:gravity="center|right"
-            android:text="순번"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
         <!--공백-->
         <LinearLayout
             android:layout_width="0dp"
@@ -37,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.15"
+            android:layout_weight="0.18"
             android:gravity="center"
             android:text="타입"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -54,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.3"
+            android:layout_weight="0.33"
             android:gravity="center"
             android:text="금액"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -70,9 +60,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.375"
+            android:layout_weight="0.378"
             android:gravity="center"
-            android:text="매칭 정보"
+            android:text="날짜"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </LinearLayout>

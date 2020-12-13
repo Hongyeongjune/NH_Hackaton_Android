@@ -39,7 +39,7 @@ import com.nhhackaton.view.loan.presenter.LoanPresenter;
 import com.nhhackaton.view.main.MainActivity;
 
 import java.io.File;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +49,7 @@ import static android.app.Activity.RESULT_OK;
 public class LoanFragment extends Fragment implements View.OnClickListener, LoanContract.View {
 
     private List<DocumentRequests> documentRequestsList = new ArrayList<>();
+
     private Context context;
 
     private LinearLayout layoutType3, layoutType4, layoutType5, layoutType6, layoutType7, layoutType8;
@@ -402,14 +403,15 @@ public class LoanFragment extends Fragment implements View.OnClickListener, Loan
     }
 
     @Override
-    public void setDocumentRequests(String url) {
+    public void setDocumentRequests(String uri) {
+        DocumentRequests documentRequests = DocumentRequests.builder()
+                .identity(SharedPreferencesUtils.readMemberFromEmail(context))
+                .type(selectedBtnNm + "")
+                .url(uri)
+                .build();
 
-        DocumentRequests d = new DocumentRequests();
-        d.setIdentity(SharedPreferencesUtils.readMemberFromEmail(context));
-        d.setType(typeNm);
-        d.setUrl(url);
+        documentRequestsList.add(documentRequests);
 
-        documentRequestsList.add(d);
     }
 
     @Override

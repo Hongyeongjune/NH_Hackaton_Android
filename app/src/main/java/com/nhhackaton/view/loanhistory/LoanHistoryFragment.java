@@ -1,7 +1,6 @@
 package com.nhhackaton.view.loanhistory;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,8 +15,11 @@ import android.view.ViewGroup;
 
 import com.nhhackaton.R;
 import com.nhhackaton.data.LoanHistory.LoanHistory;
+import com.nhhackaton.data.LoanHistory.LoanMoney.source.LoanMoneyRepository;
+import com.nhhackaton.data.LoanHistory.repayment.source.RepaymentRepository;
 import com.nhhackaton.data.LoanHistory.source.LoanHistoryRepository;
 import com.nhhackaton.listener.OnLoadMoreListener;
+import com.nhhackaton.util.SharedPreferencesUtils;
 import com.nhhackaton.util.ToastUtils;
 import com.nhhackaton.view.loanhistory.adapter.LoanHistoryAdapter;
 import com.nhhackaton.view.loanhistory.presenter.LoanHistoryContract;
@@ -66,18 +68,24 @@ public class LoanHistoryFragment extends Fragment implements LoanHistoryContract
         loanHistoryAdapter.setRecyclerView(recyclerView);
         recyclerView.setAdapter(loanHistoryAdapter);
 
-        presenter = new LoanHistoryPresenter(this, LoanHistoryRepository.getInstance());
+        presenter = new LoanHistoryPresenter(this, LoanMoneyRepository.getInstance(), RepaymentRepository.getInstance());
         presenter.setLoanHistoryAdapterModel(loanHistoryAdapter);
         presenter.setLoanHistoryAdapterView(loanHistoryAdapter);
-        presenter.callReadInvestHistory(1);
+
+        presenter.callReadLoanMoney(SharedPreferencesUtils.readMemberFromEmail(context));
+        presenter.callReadRepayment(SharedPreferencesUtils.readMemberFromEmail(context));
+        loanHistoryAdapter.setOnBasicItemClickListener(v -> {
+            ToastUtils.showToast(context, "구현 중...");
+        });
+
 
     }
 
     @Override
     public void onLoadMore() {
-        new Handler().postDelayed(() -> {
-            presenter.callReadInvestHistory(calculatePageNo());
-        }, 500);
+//        new Handler().postDelayed(() -> {
+//            presenter.callReadInvestHistory(calculatePageNo());
+//        }, 500);
     }
 
     private int calculatePageNo() {

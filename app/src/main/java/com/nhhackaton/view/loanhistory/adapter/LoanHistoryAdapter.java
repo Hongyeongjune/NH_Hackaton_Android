@@ -67,7 +67,7 @@ public class LoanHistoryAdapter extends RecyclerView.Adapter<LoanHistoryViewHold
     @Override
     public LoanHistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loan_history, parent, false);
-        return new LoanHistoryViewHolder(view, onBasicItemClickListener);
+        return new LoanHistoryViewHolder(view, onBasicItemClickListener, context);
     }
 
     @Override
